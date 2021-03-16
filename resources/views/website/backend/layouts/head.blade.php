@@ -33,4 +33,5 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('css/user.css') }}"> --}}
      <!-- Styles -->
+     @toastr_css
   </head>
