@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Exercise extends Model
 {
-    protected $fillables = [
+    protected $fillable = [
         'title',
         'url',
         'lesson_id',
@@ -15,11 +15,11 @@ class Exercise extends Model
 
     public function lesson()
     {
-        $this->belongsTo(Lesson::class);
+        return $this->belongsTo(Lesson::class);
     }
 
     public function users()
     {
-        $this->belongsToMany(User::class, 'exercise_user');
+        return $this->belongsToMany(User::class, 'exercise_user');
     }
 }

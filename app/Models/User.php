@@ -39,21 +39,21 @@ class User extends Authenticatable
 
     public function role()
     {
-        $this->belongsTo(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
     public function exercises()
     {
-        $this->belongsToMany(Exercise::class, 'exercise_user');
+        return $this->belongsToMany(Exercise::class, 'exercise_user');
     }
 
     public function courses()
     {
-        $this->belongsToMany(Courses::class, 'course_user');
+        return $this->belongsToMany(Courses::class, 'course_user');
     }
 
     public function comments()
     {
-        $this->belongsTo(Comment::class);
+        return $this->belongsTo(Comment::class);
     }
 }

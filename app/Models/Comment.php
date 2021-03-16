@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    protected $fillables = [
+    protected $fillable = [
         'course_id',
         'user_id',
         'content',
@@ -16,11 +16,11 @@ class Comment extends Model
 
     public function course()
     {
-        $this->belongsTo(Courses::class);
+        return $this->belongsTo(Courses::class);
     }
 
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }

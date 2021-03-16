@@ -9,7 +9,7 @@ class Courses extends Model
 {
     use SoftDeletes;
 
-    protected $fillables = [
+    protected $fillable = [
         'name',
         'description',
         'images',
@@ -20,21 +20,21 @@ class Courses extends Model
 
     public function users()
     {
-        $this->belongsToMany(User::class, 'course_user');
+        return $this->belongsToMany(User::class, 'course_user');
     }
 
     public function lessons()
     {
-        $this->hasMany(Lesson::class);
+        return $this->hasMany(Lesson::class);
     }
 
     public function category()
     {
-        $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function comments()
     {
-        $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class);
     }
 }
