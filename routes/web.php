@@ -20,6 +20,8 @@ Route::get('/', function () {
 Route::resource('home', 'ClientController');
 
 Auth::routes();
-Route::resource('admin', 'AdminController');
-Route::resource('categories', 'CategoryController');
+Route::resource('/admin', 'AdminController');
+Route::resource('/categories', 'CategoryController');
+Route::resource('/manageUser', 'UserController');
+Route::get('/blacklistUser', 'UserController@getBlackListUser')->name('blacklistUser');
 // Route::get('/home', 'HomeController@index')->name('home');

@@ -20,6 +20,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @toastr_css
 </head>
 <body>
     <div id="app">
@@ -79,5 +80,8 @@
             @yield('content')
         </main>
     </div>
+    @jquery
+    @toastr_js
+    @toastr_render
 </body>
 </html>

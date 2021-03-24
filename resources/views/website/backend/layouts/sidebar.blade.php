@@ -9,13 +9,14 @@
                 </a>
             </li>
             <li>
-                {{-- <a>
-                    <i class="fas fa-tags"></i>{{ trans('message.category') }}
+                <a>
+                    <i class="fas fa-tags"></i>{{ trans('message.manage_user') }}
                     <span class="fa fa-chevron-down"></span>
-                </a> --}}
-                {{-- <ul class="nav child_menu">
-                    <li><a href="{{ route('categories.index') }}">{{ trans('message.category') }}</a></li>
-                </ul> --}}
+                </a>
+                <ul class="nav child_menu">
+                    <li><a href="{{ route('manageUser.index') }}">{{ trans('message.list_user') }}</a></li>
+                    <li><a href="{{ route('blacklistUser') }}">{{ trans('message.black_list') }}</a></li>
+                </ul>
             </li>
             <li>
                 {{-- <a>
