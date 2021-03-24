@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +15,25 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('website.backend.layouts.main');
+        $users = User::where('status', config('status.active'))->paginate(7);
+
+        return view('website.backend.users.index', compact('users'));
+    }
+
+    public function getBlackListUser()
+    {
+        $now = Carbon::now();
+        $banned_user = User::where('status', config('status.inactive'))->paginate(7);
+
+        foreach($banned_user as $user) {
+            if ($user->banned_until <= $now) {
+                $user->update([
+                    'status' => config('status.active'),
+                    'banned_until' => null,
+                ]);
+            }
+        }
+        return view('website.backend.users.banned_user', compact('banned_user'));
     }
 
     /**
@@ -72,7 +88,24 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        if ($user->banned_until != null) {
+            $user->update([
+                'banned_until' => null,
+                'status' => config('status.active'),
+            ]);
+            toastr()->success(trans('message.update_successfully'));
+
+            return redirect()->back();
+        }
+        $user->update([
+            'banned_until' => $request->banned_until,
+            'status' => config('status.inactive'),
+        ]);
+        toastr()->success(trans('message.update_successfully'));
+
+        return redirect()->route('manageUser.index');
     }
 
     /**

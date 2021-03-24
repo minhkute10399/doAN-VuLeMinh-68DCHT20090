@@ -301,6 +301,37 @@ a:hover {
 .link a {
     color: #ffffffb3;
 }
+.avatar_user {
+    height: 43px;
+    width: 43px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.list_image {
+    height: 50px;
+    width: 50px;
+
+}
+.edit_list_user {
+    display: flex;
+    align-items: center;
+}
+.inactive_user {
+    background-color: rgb(243, 243, 44);
+    color: black;
+    display: flex;
+    justify-content: center;
+    padding: 5px 0;
+    font-weight: bold;
+}
+.active_user {
+    background-color: rgb(58, 228, 58);
+    color: black;
+    display: flex;
+    justify-content: center;
+    padding: 5px 0;
+    font-weight: bold;
+}
 footer {
     background-color: black;
     padding: 40px 0;

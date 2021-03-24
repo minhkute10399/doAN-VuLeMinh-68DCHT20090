@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\User;
+use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -60,14 +60,35 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Models\User
      */
     protected function create(array $data)
     {
-        return User::create([
+        $request = request();
+        $filename = config('image_path.image_default');
+        if ($request->hasFile('images')) {
+            $file = $request->file('images');
+            $extension = $file->getClientOriginalName();
+            $filenameImg = time() . '.' . $extension;
+            $file->move(public_path(config('image_path.images')), $filenameImg);
+
+            return User::create([
+                'name' => $data['name'],
+                'images' => $filenameImg,
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'role_id' => config('role.student'),
+                'status' => config('status.active'),
+            ]);
+        }
+
+            return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role_id' => config('role.student'),
+            'images' => $filename,
+            'status' => config('status.active'),
         ]);
     }
 }

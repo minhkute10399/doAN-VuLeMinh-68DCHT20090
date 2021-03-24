@@ -28,7 +28,7 @@
 
     <!-- Custom Theme Style -->
     <link href="{{ asset('adminbackend/build/css/custom.min.css') }}" rel="stylesheet">
-    <script rel="stylesheet" href="{{ asset('bower_components/boostrap/js/src/modal.js') }}"></script>
+    <script rel="stylesheet" href="{{ asset('bower_components/boostrap/js/dist/modal.js') }}"></script>
     <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('css/user.css') }}"> --}}
