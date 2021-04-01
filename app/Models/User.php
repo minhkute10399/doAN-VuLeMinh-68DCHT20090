@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     public function courses()
     {
-        return $this->belongsToMany(Courses::class, 'course_user');
+        return $this->belongsToMany(Courses::class, 'course_user', 'course_id', 'user_id');
     }
 
     public function comments()

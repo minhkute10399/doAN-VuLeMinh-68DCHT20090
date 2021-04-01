@@ -24,4 +24,5 @@ Route::resource('/admin', 'AdminController');
 Route::resource('/categories', 'CategoryController');
 Route::resource('/manageUser', 'UserController');
 Route::get('/blacklistUser', 'UserController@getBlackListUser')->name('blacklistUser');
+Route::resource('/manageCourse', 'CourseController');
 // Route::get('/home', 'HomeController@index')->name('home');
