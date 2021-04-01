@@ -19,14 +19,14 @@
                 </ul>
             </li>
             <li>
-                {{-- <a>
-                    <i class="fas fa-tags"></i>{{ trans('message.post') }}
+                <a>
+                    <i class="fas fa-tags"></i>{{ trans('message.manage_course') }}
                     <span class="fa fa-chevron-down"></span>
                 </a>
                 <ul class="nav child_menu">
-                    <li><a href="{{ route('posts.index') }}">{{ trans('message.post') }}</a></li>
-                    <li><a href="{{ route('postRequest') }}">{{ trans('message.request_post') }}</a></li>
-                </ul> --}}
+                    <li><a href="{{ route('manageCourse.index') }}">{{ trans('message.list_course') }}</a></li>
+                    {{-- <li><a href="{{ route('postRequest') }}">{{ trans('message.request_post') }}</a></li> --}}
+                </ul>
             </li>
             <li>
                 {{-- <a>

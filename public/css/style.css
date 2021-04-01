@@ -332,6 +332,9 @@ a:hover {
     padding: 5px 0;
     font-weight: bold;
 }
+.modal-footer a{
+    text-decoration: none;
+}
 footer {
     background-color: black;
     padding: 40px 0;
