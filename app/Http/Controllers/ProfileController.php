@@ -13,6 +13,8 @@ use App\Models\Lesson;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -40,6 +42,10 @@ class ProfileController extends Controller
 
     public function manageCourseByTeacher()
     {
+        if (!Gate::allows('see_teacher_course')) {
+            abort(Response::HTTP_FORBIDDEN);
+        }
+
         $teacher = User::findOrFail(Auth::user()->id)->load(['courses' => function ($query) {
             $query->orderBy('created_at', 'desc');
         }]);
