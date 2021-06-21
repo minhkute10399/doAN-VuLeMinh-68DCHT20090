@@ -10,8 +10,8 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title">
-                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i>
-                            <span>{{ trans('message.admin') }}</span></a>
+                        <a href="index.html" class="site_title"><i class="fas fa-laptop-code"></i>
+                             <span>{{ trans('message.admin') }}</span></a>
                     </div>
                     <div class="clearfix"></div>
                     <br />
@@ -64,11 +64,30 @@
                                         {{ Auth::user()->name }}
                                     </a>
 
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                            @csrf
-                                            <button type="submit" class="logout_btn">{{ trans('message.logout') }}</button>
-                                        </form>
+                                    <div class="dropdown-menu dropdown-menu-right li-admin" aria-labelledby="navbarDropdown">
+                                        <ul>
+                                            <li>
+                                                <a href="{!! route('change-language', ['en']) !!}">
+                                                    <i class="fas fa-globe-americas"></i>
+                                                    <p for="theme">{{ trans('message.en') }}</p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{!! route('change-language', ['vi']) !!}">
+                                                    <i class="fas fa-globe-asia"></i>
+                                                    <p for="theme">{{ trans('message.vi') }}</p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="logout-btn">
+                                                        <i class="fas fa-sign-out-alt"></i>
+                                                        <p for="theme">{{ trans('message.logout') }}</p>
+                                                    </button>
+                                                </form>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </li>
                             @endguest

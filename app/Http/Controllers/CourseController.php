@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Courses;
 use Illuminate\Http\Request;
 use App\Models\Lesson;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CourseController extends Controller
 {
@@ -38,7 +42,16 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Register course by user
+        $course = Courses::findOrFail($request->course_id)->load('users', 'lessons');
+        if (!$course->users->contains(Auth::user())) {
+            $course->users()->attach([
+                'user_id' => Auth::id(),
+            ]);
+        }
+        Alert::success(trans('message.success'));
+
+        return redirect()->back();
     }
 
     /**
@@ -63,7 +76,11 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $course = Courses::findOrFail($id);
+        $user = Auth::user();
+        $categories = Category::all();
+
+        return view('website.frontend.edit_course_teacher', compact('course', 'user', 'categories'));
     }
 
     /**
@@ -75,7 +92,32 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $result = Courses::findOrFail($id);
+        if ($request->images) {
+            $file = $data['images'];
+            $name = time() . $file->getClientOriginalName();
+            $path = public_path(config('image_path.images'));
+            $file->move($path, $name);
+            $result->update([
+                'name' => $data['name'],
+                'description' => $data['description'],
+                'images' => $name,
+            ]);
+        } else {
+            $result->update([
+                'name' => $data['name'],
+                'description' => $data['description'],
+            ]);
+        }
+        if ($result) {
+            // toastr()->success(trans('message.update_successfully'));
+            Alert::success(trans('message.success'));
+        } else {
+            Alert::success(trans('message.unsuccessful'));
+        }
+
+        return redirect()->route('manageCourse.index');
     }
 
     /**
@@ -86,6 +128,6 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

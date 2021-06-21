@@ -14,15 +14,39 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::resource('home', 'ClientController');
 
-Auth::routes();
-Route::resource('/admin', 'AdminController');
-Route::resource('/categories', 'CategoryController');
-Route::resource('/manageUser', 'UserController');
-Route::get('/blacklistUser', 'UserController@getBlackListUser')->name('blacklistUser');
-Route::resource('/manageCourse', 'CourseController');
-// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['localization']], function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    Route::get('/changeLanguage/{language}', 'HomeController@changeLanguage')->name('change-language');
+    Route::resource('home', 'ClientController');
+    Auth::routes();
+    Route::resource('/admin', 'AdminController');
+    Route::get('/dashboard', 'AdminController@countDashboard')->name('dashboard');
+    Route::get('/adminLesson/{id}', 'LessonController@detailLessonAdminCheck')->name('adminLesson');
+    Route::resource('/categories', 'CategoryController');
+    Route::resource('/manageUser', 'UserController');
+    Route::get('/blacklistUser', 'UserController@getBlackListUser')->name('blacklistUser');
+    Route::resource('/manageCourse', 'CourseController');
+    Route::get('/allCourses', 'ClientController@viewAllCourses')->name('allCourses');
+    Route::get('singleCourse/{id}', 'ClientController@showSingleCourse')->name('singleCourse');
+    Route::resource('/comment', 'CommentController');
+    Route::get('/videoLesson/{id}', 'LessonController@showVideoLesson')->name('video');
+    Route::resource('/lessons', 'LessonController');
+    Route::resource('/profile', 'ProfileController');
+    Route::get('email', 'ProfileController@showEmail')->name('email');
+    Route::patch('updateEmail/{id}', 'ProfileController@updateEmailUser')->name('update');
+    Route::get('chart', 'ProfileController@getDataUserChart')->name('chart');
+    Route::get('courses', 'ProfileController@manageCourseByTeacher')->name('courses');
+    Route::put('updateCourse/{id}', 'ProfileController@updateCoursebyTeacher')->name('updateCourse');
+    Route::post('addLesson', 'ProfileController@addLessonByTeacher')->name('addLesson');
+    Route::delete('destroyLesson/{id}', 'ProfileController@destroyLesson')->name('destroyLesson');
+    Route::put('updateLesson/{id}', 'ProfileController@updateLesson')->name('updateLesson');
+    Route::get('exercises/{id}', 'ProfileController@showExerciseByTeacher')->name('exercises');
+    Route::post('addExercise', 'ProfileController@addExerciseByTeacher')->name('addexercise');
+    Route::resource('sendExercise', 'ExerciseController');
+    // Route::get('detailManageCourse/{id}', 'ProfileController');
+});
+

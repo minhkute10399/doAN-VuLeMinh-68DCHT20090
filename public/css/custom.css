@@ -1,0 +1,154 @@
+.btn-mine {
+    width: 4rem;
+    margin-top: 1rem;
+}
+
+.width-img {
+    width: 250px;
+}
+
+#img-preview {
+    width: 600px;
+    display: block;
+    margin: 20px 0px;
+}
+
+.form-custom {
+    display: inline-block;
+}
+
+.paginate-container {
+    display: flex;
+    padding-top: 1rem;
+    justify-content: center;
+}
+
+.error-message {
+    color: red;
+    width: 100%;
+    font-size: 0.85rem;
+}
+
+.focus {
+    border: 1px solid red;
+}
+
+.card-image-container {
+    margin-top: 0.5rem;
+    height: 400px;
+    width: 800px;
+    border: 1px solid #ccc;
+}
+
+.card-content-container {
+    width: 800px;
+    border: 1px solid #ccc;
+    border-top: none;
+    padding: 1rem;
+}
+
+.card-content-container {
+    margin-bottom: 1rem;
+}
+
+.card-image-container > img {
+    height: 100%;
+}
+
+.course-order {
+    width: 70px;
+    text-align: center;
+}
+
+#course-order-padding {
+    padding-top: 18px;
+}
+
+.fixed-width {
+    width: 30%;
+}
+
+.video-url-container {
+    width: 450px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-overflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 350px;
+}
+
+.iframe-show-lesson > iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.hight-light {
+    color: rgb(255, 185, 36);
+}
+
+#content-chat {
+    padding: 1rem;
+    display: flex;
+}
+
+.content-wrapper .chat-list-container {
+    margin-right: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.329);
+    border-radius: 5px;
+    margin-right: 1rem;
+    width: 310px;
+    height: 90vh;
+    overflow-y: auto;
+}
+
+.content-wrapper .user-item-chat:hover {
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+#content-chat .mentor-container.chat-content {
+    border: 1px solid rgba(0, 0, 0, 0.329);
+    border-radius: 5px;
+}
+
+#content-chat .header-chat {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.329);
+}
+
+#content-chat .receive {
+    background-color: #e4e6eb;
+}
+
+#content-chat #text-chat .message span {
+    color: #1c1e21;
+}
+
+#content-chat .send-action input {
+    background-color: #e4e6eb;
+}
+
+#content-chat .pending {
+    margin-left: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgb(58, 136, 255);
+}
+
+#content-chat .avatar-chat.sub-avatar-mentor {
+    position: relative;
+}
+
+#content-chat .last-message-user{
+    width: 180px;
+}
+
+#content-chat .active-chat {
+    background-color: #cde6ff;
+}

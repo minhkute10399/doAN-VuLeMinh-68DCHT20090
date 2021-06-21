@@ -16,11 +16,15 @@
         </div>
         <div class="x_content">
             <div class="row">
-                <div class="col-sm-6">
-                    <div id="datatable-responsive_filter" class="dataTables_filter">
-                        <label>Search:
-                            <input type="search" class="form-control input-sm search_user" placeholder="" aria-controls="datatable-responsive" name="search">
-                        </label>
+                <div class="col-sm-2">
+                    <div class="input-group input-group-sm">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -66,8 +70,8 @@
                                                     <td>{{ $course->name }}</td>
                                                     <td><img src="{{ asset(config('image_path.images') .'/'. $course->images) }}" alt="" class="list_image"></td>
                                                     <td>{{ $course->category->name }}</td>
-                                                    @foreach ($course->users as $item)
-                                                        <td>{{ $item->name }}</td>
+                                                    @foreach ($course->users->where('role_id', config('role.teacher')) as $teacher)
+                                                        <td>{{ $teacher->name }}</td>
                                                     @endforeach
                                                     <td>{{ date('M d ,Y', strtotime($course->created_at)) }} {{ trans('message.at') }} {{ date('g:ia', strtotime($course->created_at)) }}</td>
                                                     <td>{{ date('M d ,Y', strtotime($course->updated_at)) }} {{ trans('message.at') }} {{ date('g:ia', strtotime($course->updated_at)) }}</td>
@@ -79,6 +83,7 @@
                                                             </button>
                                                         </form>
 
+                                                        {{-- <a href="{{ route('manageCourse.edit', [$course->id]) }}" class="btn btn-success">{{ trans('message.edit') }}</a> --}}
                                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit{{ $course->id }}">
                                                            {{ trans('message.reject') }}
                                                         </button>
