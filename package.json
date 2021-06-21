@@ -38,5 +38,8 @@
     "bugs": {
         "url": "https://github.com/minhkute10399/doAN-VuLeMinh-68DCHT20090/issues"
     },
-    "homepage": "https://github.com/minhkute10399/doAN-VuLeMinh-68DCHT20090#readme"
+    "homepage": "https://github.com/minhkute10399/doAN-VuLeMinh-68DCHT20090#readme",
+    "dependencies": {
+        "chart.js": "^3.2.1"
+    }
 }

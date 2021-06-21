@@ -20,6 +20,8 @@ class Exercise extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'exercise_user');
+        return $this->belongsToMany(User::class, 'exercise_user', 'exercise_id', 'user_id')
+            ->withTimestamps()
+                ->withPivot('url');
     }
 }

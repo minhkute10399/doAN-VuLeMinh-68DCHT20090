@@ -16,15 +16,16 @@
         </div>
         <div class="x_content">
             <div class="row">
-                <div class="col-sm-6">
-                    <div id="datatable-responsive_filter" class="dataTables_filter">
-                        <label>Search:
-                            <input type="search" class="form-control input-sm search_user" placeholder="" aria-controls="datatable-responsive" name="search">
-                        </label>
+                <div class="col-sm-2">
+                    <div class="input-group input-group-sm">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
                     </div>
-                    <a class="btn btn-success back" href="{{ route('manageCourse.index') }}">
-                        {{ trans('message.back') }}
-                    </a>
                 </div>
             </div>
             <div class="row">
@@ -41,9 +42,6 @@
                                                 </th>
                                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" aria-sort="ascending" aria-label="First name: activate to sort column descending">
                                                     {{ trans('message.title') }}
-                                                </th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" aria-label="Last name: activate to sort column ascending">
-                                                    {{ trans('message.video_url') }}
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="datatable-responsive"rowspan="1" colspan="1" aria-label="Last name: activate to sort column ascending">
                                                     {{ trans('message.course') }}
@@ -64,14 +62,13 @@
                                                 <tr role="row" class="odd">
                                                     <td>{{ $index++ }}</td>
                                                     <td>{{ $lesson->title }}</td>
-                                                    <td>{{ $lesson->video_url }}</td>
                                                     <td>{{ $lesson->course->name }}</td>
                                                     <td>{{ date('M d ,Y', strtotime($lesson->created_at)) }} {{ trans('message.at') }} {{ date('g:ia', strtotime($lesson->created_at)) }}</td>
                                                     <td>{{ date('M d ,Y', strtotime($lesson->updated_at)) }} {{ trans('message.at') }} {{ date('g:ia', strtotime($lesson->updated_at)) }}</td>
                                                     <td class="edit_list_user">
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#show{{ $lesson->id }}">
+                                                        <a href="{{ route('adminLesson', [$lesson->id]) }}" class="btn btn-primary">
                                                             {{ trans('message.show_video') }}
-                                                        </button>
+                                                        </a>
 
                                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit{{ $lesson->id }}">
                                                            {{ trans('message.reject') }}
@@ -90,7 +87,7 @@
         </div>
     </div>
 </div>
-@foreach ($course->lessons as $lesson)
+{{-- @foreach ($course->lessons as $lesson)
         <div class="modal fade" id="show{{ $lesson->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <form action="{{ route('manageUser.update', [$lesson->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -105,18 +102,18 @@
                         </div>
                         <div class="modal-body">
                             <div class="item form-group">
-                                <iframe width="1000" height="500" src="{{ $lesson->video_url }}" frameborder="0"></iframe>
+                                <iframe width="1000" height="1000" src="{{ $lesson->video_url }}" frameborder="0"></iframe>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <a type="button" class="btn btn-secondary close" data-dismiss="modal">{{ trans('message.close') }}</a>
-                            {{-- <button type="submit" d-form="block{{ $lesson->id }}"  class="btn btn-danger">{{ trans('message.reject') }}</button> --}}
+                            <button type="submit" d-form="block{{ $lesson->id }}"  class="btn btn-danger">{{ trans('message.reject') }}</button>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
-@endforeach
+@endforeach --}}
 
 @foreach ($course->lessons as $lesson)
         <div class="modal fade" id="edit{{ $lesson->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

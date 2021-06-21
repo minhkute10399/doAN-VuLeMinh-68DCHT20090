@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Courses;
+use App\Models\Lesson;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -20,6 +23,15 @@ class AdminController extends Controller
         return view('website.backend.layouts.main');
     }
 
+    public function countDashboard()
+    {
+        $students = User::where('role_id', config('role.student'))->get();
+        $mentors = User::where('role_id', config('role.teacher'))->get();
+        $lessons = Lesson::all();
+        $courses = Courses::all();
+
+        return view('website.backend.dashboard.dashboard', compact('students', 'mentors', 'lessons', 'courses'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -38,7 +50,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -72,7 +84,7 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

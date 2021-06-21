@@ -17,6 +17,28 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('bower_components/components-font-awesome/css/all.css') }}">
 
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/bootstrap.min.css') }}">
+     <!-- IcoFont Min CSS -->
+     <link rel="stylesheet" href="assets/css/icofont.min.css">
+     <!-- Classy Nav CSS -->
+     <link rel="stylesheet" href="assets/css/classy-nav.min.css">
+     <!-- Animate CSS -->
+     <link rel="stylesheet" href="assets/css/animate.css">
+     <!-- Owl Carousel CSS -->
+     <link rel="stylesheet" href="assets/css/owl.carousel.css">
+     <!-- Magnific Popup CSS -->
+     <link rel="stylesheet" href="assets/css/magnific-popup.css">
+     <!-- Owl Theme Default CSS -->
+     <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+     <!-- Style CSS -->
+     <link rel="stylesheet" href="assets/css/style.css">
+     <!-- Responsive CSS -->
+     <link rel="stylesheet" href="assets/css/responsive.css">
+
+     <title>EduField - Education & Online Courses HTML Template</title>
+
+     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">

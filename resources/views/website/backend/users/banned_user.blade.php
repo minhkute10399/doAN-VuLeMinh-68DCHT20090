@@ -16,11 +16,15 @@
         </div>
         <div class="x_content">
             <div class="row">
-                <div class="col-sm-6">
-                    <div id="datatable-responsive_filter" class="dataTables_filter">
-                        <label>Search:
-                            <input type="search" class="form-control input-sm search_user" placeholder="" aria-controls="datatable-responsive">
-                        </label>
+                <div class="col-sm-2">
+                    <div class="input-group input-group-sm">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

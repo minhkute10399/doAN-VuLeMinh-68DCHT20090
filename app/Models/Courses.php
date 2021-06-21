@@ -20,7 +20,7 @@ class Courses extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'course_user', 'course_id', 'user_id');
+        return $this->belongsToMany(User::class, 'course_user', 'course_id', 'user_id')->withTimestamps();
     }
 
     public function lessons()
@@ -35,6 +35,6 @@ class Courses extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'course_id');
     }
 }

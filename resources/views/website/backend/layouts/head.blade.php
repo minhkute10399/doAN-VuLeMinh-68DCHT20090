@@ -25,7 +25,7 @@
     <!-- bootstrap-daterangepicker -->
     <link href="{{ asset('adminbackend/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/js/src/modal.js') }}">
-
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <!-- Custom Theme Style -->
     <link href="{{ asset('adminbackend/build/css/custom.min.css') }}" rel="stylesheet">
     <script rel="stylesheet" href="{{ asset('bower_components/boostrap/js/dist/modal.js') }}"></script>

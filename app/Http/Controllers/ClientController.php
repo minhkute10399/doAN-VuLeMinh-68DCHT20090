@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Courses;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
@@ -13,7 +16,26 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view('website.frontend.index');
+        $courses = Courses::orderBy('created_at', 'desc')->latest()->take(6)->get();
+        $courses->load('users');
+        $student = User::where('role_id', config('role.student'))->get();
+
+        return view('website.frontend.index', compact('courses', 'student'));
+    }
+
+    public function viewAllCourses()
+    {
+        $courses = Courses::orderBy('created_at', 'desc')->paginate(config('paginateHome.paginateHome'));
+
+        return view('website.frontend.all_courses', compact('courses'));
+    }
+
+    public function showSingleCourse($id)
+    {
+        //show singlge course detail
+        $course = Courses::findOrFail($id)->load(['comments', 'users']);
+
+        return view('website.frontend.single_course', compact('course'));
     }
 
     /**
