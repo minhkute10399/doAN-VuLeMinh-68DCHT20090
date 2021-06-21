@@ -66,9 +66,11 @@
                         <li class="sidebar-item">
                             <a href="{{ route('profile.index') }}">{{ trans('message.account') }}</a>
                         </li>
-                        <li class="sidebar-item">
-                            <a href="{{ route('courses') }}">{{ trans('message.manage_course') }}</a>
-                        </li>
+                        @can('see_teacher_course')
+                            <li class="sidebar-item">
+                                <a href="{{ route('courses') }}">{{ trans('message.manage_course') }}</a>
+                            </li>
+                        @endcan
                     </ul>
                 </section>
             </section>
