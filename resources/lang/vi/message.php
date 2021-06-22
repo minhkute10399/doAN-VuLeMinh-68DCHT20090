@@ -131,4 +131,11 @@ return [
     'your_solution' => 'Bài giải của bạn',
     'your_solution_link' => 'Link bài giải của bạn',
     'exercise_link' => 'Link bài tập',
+    'unauthorize' => 'Bạn không có quyền được truy cập trang này',
+    'list_course' => 'Danh sách khóa học',
+    'show_video' => 'Xem video',
+    'create_category' => 'Tạo môn học',
+    'submit' => 'Gửi',
+    'children' => 'Xem các lớp',
+    'banned_at' => 'Ngày cấm',
 ];

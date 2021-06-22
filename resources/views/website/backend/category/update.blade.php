@@ -29,7 +29,7 @@
                     <div class="item form-group">
                         <div class="col-md-6 col-sm-6 offset-md-3">
                             <a href="{{ route('categories.index') }}" class="btn btn-primary">{{ trans('message.back') }}</a>
-                            <button type="submit" class="btn btn-success">{{ trans('message.submit') }}</button>
+                            <button type="submit" class="btn btn-success">{{ trans('message.save_change') }}</button>
                         </div>
                     </div>
                 </form>

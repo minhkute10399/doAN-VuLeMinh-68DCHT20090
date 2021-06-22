@@ -20,15 +20,17 @@ Route::group(['middleware' => ['localization']], function () {
     Route::get('/', function () {
         return view('welcome');
     });
+    Route::group(['middleware' => ['admin']], function () {
+        Route::resource('/admin', 'AdminController');
+        Route::get('/dashboard', 'AdminController@countDashboard')->name('dashboard');
+        Route::get('/adminLesson/{id}', 'LessonController@detailLessonAdminCheck')->name('adminLesson');
+        Route::resource('/categories', 'CategoryController');
+        Route::resource('/manageUser', 'UserController');
+        Route::get('/blacklistUser', 'UserController@getBlackListUser')->name('blacklistUser');
+    });
     Route::get('/changeLanguage/{language}', 'HomeController@changeLanguage')->name('change-language');
     Route::resource('home', 'ClientController');
     Auth::routes();
-    Route::resource('/admin', 'AdminController');
-    Route::get('/dashboard', 'AdminController@countDashboard')->name('dashboard');
-    Route::get('/adminLesson/{id}', 'LessonController@detailLessonAdminCheck')->name('adminLesson');
-    Route::resource('/categories', 'CategoryController');
-    Route::resource('/manageUser', 'UserController');
-    Route::get('/blacklistUser', 'UserController@getBlackListUser')->name('blacklistUser');
     Route::resource('/manageCourse', 'CourseController');
     Route::get('/allCourses', 'ClientController@viewAllCourses')->name('allCourses');
     Route::get('singleCourse/{id}', 'ClientController@showSingleCourse')->name('singleCourse');

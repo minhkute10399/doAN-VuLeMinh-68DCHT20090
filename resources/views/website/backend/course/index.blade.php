@@ -78,14 +78,14 @@
                                                     <td class="edit_list_user">
                                                         <form action="{{ route('manageCourse.show', [$course->id]) }}">
                                                             @csrf
-                                                            <button type="submit" class="btn btn-primary">
+                                                            <button type="submit" class="btn btn-outline-info">
                                                                 {{ trans('message.show_lesson') }}
                                                             </button>
                                                         </form>
 
                                                         {{-- <a href="{{ route('manageCourse.edit', [$course->id]) }}" class="btn btn-success">{{ trans('message.edit') }}</a> --}}
-                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit{{ $course->id }}">
-                                                           {{ trans('message.reject') }}
+                                                        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#edit{{ $course->id }}">
+                                                           {{ trans('message.delete') }}
                                                         </button>
                                                     </td>
                                                 </tr>
@@ -117,8 +117,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">{{ trans('messsage.do_you_want_to_reject') }}<span class="required">*</span>
-                                </label>
+                                <span>{{ trans('message.want_to_delete') }}</span>
                             </div>
                         </div>
                         <div class="modal-footer">

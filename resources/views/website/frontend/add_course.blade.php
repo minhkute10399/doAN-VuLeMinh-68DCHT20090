@@ -7,9 +7,9 @@
                 <a href="{{ route('home.index') }}" class="sub-link-profile">
                     <img src="{{ asset('edufield/assets/img/logo.png') }}" alt="" class="logo-home">
                 </a>
-                <a href="{{ route('profile.index') }}" class="btn-link">
+                <a href="{{ url()->previous() }}" class="btn-link">
                     <i class="fas fa-chevron-left"></i>
-                    <span>{{ trans('message.back_profile') }}</span>
+                    <span>{{ trans('message.back_to_course') }}</span>
                 </a>
             </div>
         </header>

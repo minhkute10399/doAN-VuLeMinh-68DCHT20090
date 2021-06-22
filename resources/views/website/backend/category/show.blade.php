@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="card-box table-responsive">
-                            <a href="{{ route('categories.index') }}" class="btn btn-success">{{ trans('message.back') }}</a>
+                            <a href="{{ url()->previous() }}" class="btn btn-outline-primary add-category-admin">{{ trans('message.back') }}</a>
                             <div id="datatable-responsive_wrapper"class="dataTables_wrapper container-fluid dt-bootstrap no-footer">
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -31,11 +31,11 @@
                                                     <tr role="row" class="odd">
                                                         <td>{{ $children->name }}</td>
                                                         <td class="td-body d-flex">
-                                                            <a class="btn btn-success" href="{{ route('categories.edit', [$children->id]) }}">
+                                                            <a class="btn btn-outline-success" href="{{ route('categories.edit', [$children->id]) }}">
                                                                 {{ trans('message.edit') }}
                                                             </a>
 
-                                                            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#category{{ $children->id }}">
+                                                            <button type="submit" class="btn btn-outline-danger" data-toggle="modal" data-target="#category{{ $children->id }}">
                                                                 {{ trans('message.delete') }}
                                                             </button>
                                                         </td>
@@ -57,7 +57,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">{{ trans('message.modal_title_delete') }}</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">{{ $children->name }}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -68,11 +68,11 @@
                             @csrf
                             @method('DELETE')
                         </form>
-                        <span>{{ trans('message.want_delete') }}</span>
+                        <span>{{ trans('message.want_to_delete') }}</span>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('message.close') }}</button>
-                        <button form="form{{ $children->id }}" type="submit" class="btn btn-primary">{{ trans('message.confirm') }}</button>
+                        <button form="form{{ $children->id }}" type="submit" class="btn btn-danger">{{ trans('message.save_change') }}</button>
                     </div>
                 </div>
             </div>
