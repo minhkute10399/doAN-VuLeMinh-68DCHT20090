@@ -88,7 +88,7 @@
                                                     <td>{{ date('M d ,Y', strtotime($user->updated_at)) }} {{ trans('message.at') }} {{ date('g:ia', strtotime($user->updated_at)) }}</td>
                                                     <td>{{ $user->banned_until }}</td>
                                                     <td class="edit_list_user">
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit{{ $user->id }}">
+                                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#edit{{ $user->id }}">
                                                            {{ trans('message.unban') }}
                                                         </button>
                                                     </td>

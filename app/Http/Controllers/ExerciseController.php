@@ -38,10 +38,14 @@ class ExerciseController extends Controller
      */
     public function store(SendExerciseStudentRequest $request)
     {
-        //store exercise of student pivot
+        //store exercise and update exsiting of student pivot
         $exercise = Exercise::findOrFail($request->exercise_id)->load('users');
         if (!$exercise->users->contains(Auth::user())) {
             $exercise->users()->attach(Auth::id(),[
+                'url' => $request->url,
+            ]);
+        } else {
+            $exercise->users()->updateExistingPivot(Auth::id(), [
                 'url' => $request->url,
             ]);
         }

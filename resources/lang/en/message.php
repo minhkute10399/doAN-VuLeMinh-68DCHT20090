@@ -132,4 +132,11 @@ return [
     'your_solution' => 'Your solution',
     'your_solution_link' => 'Your solution link',
     'exercise_link' => 'Exercise link',
+    'unauthorize' => 'You do not have permission to access this site',
+    'list_course' => 'List course',
+    'show_video' => 'Show video',
+    'create_category' => 'Create category',
+    'submit' => 'Submit',
+    'children' => 'Children',
+    'banned_at' => 'Banned at',
 ];

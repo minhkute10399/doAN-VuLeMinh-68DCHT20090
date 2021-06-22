@@ -714,8 +714,11 @@ dl, ol, ul {
 }
 .li-admin a {
     display: flex;
-    color: black !important;
+    color: #212529 !important;
     text-decoration: none;
+}
+.add-category-admin {
+    margin: 10px 15px;
 }
 .li-admin li{
     display: flex;
@@ -1533,7 +1536,7 @@ iframe {
     position: absolute;
     bottom: 0;
     right: 0;
-    background-color: rgba(88, 88, 88, 0.8);
+    background-color: rgba(88, 88, 88, 0.8) ;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -1949,6 +1952,18 @@ label:not(.form-check-label):not(.custom-file-label) {
 }
 .attention {
     margin: 10px 0;
+}
+.logo-admin-page {
+    background-color: #343a40 !important;
+}
+.logo-admin-home {
+    width: 95%;
+}
+.sidebar-admin > a > i {
+    padding: 0 8px ;
+}
+.name-admin > a {
+    color: #212529;
 }
 footer {
     background-color: #292929;

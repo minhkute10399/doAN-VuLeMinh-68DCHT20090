@@ -7,34 +7,18 @@
     @include('sweetalert::alert')
     <div class="container body">
         <div class="main_container">
-            <div class="col-md-3 left_col">
+            <div class="col-md-3 left_col admin-theme">
                 <div class="left_col scroll-view">
-                    <div class="navbar nav_title">
-                        <a href="index.html" class="site_title"><i class="fas fa-laptop-code"></i>
-                             <span>{{ trans('message.admin') }}</span></a>
+                    <div class="navbar nav_title logo-admin-page">
+                        <a href="{{ route('home.index') }}" class="site_title">
+                            <img src="{{ asset('edufield/assets/img/logo.png') }}" alt="" class="logo-admin-home">
+                        </a>
                     </div>
                     <div class="clearfix"></div>
                     <br />
                     <!-- sidebar menu -->
                     @include('website.backend.layouts.sidebar')
                     <!-- /sidebar menu -->
-
-                    <!-- /menu footer buttons -->
-                    <div class="sidebar-footer hidden-small">
-                        <a data-toggle="tooltip" data-placement="top" title="Settings">
-                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Lock">
-                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                        </a>
-                    </div>
-                    <!-- /menu footer buttons -->
                 </div>
             </div>
             <!-- top navigation -->
@@ -56,7 +40,7 @@
                                     </li>
                                 @endif
                             @else
-                                <li class="nav-item dropdown">
+                                <li class="nav-item dropdown name-admin">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         <img src="{{ asset(config('image_path.images') . '/' . Auth::user()->images) }}" alt=""
@@ -92,17 +76,6 @@
                                 </li>
                             @endguest
                             </li>
-                            {{-- <li class="nav-item dropdown language-menu">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ trans('message.language') }}
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right language-li" aria-labelledby="navbarDropdown">
-                                    <a href="{{ route('change-languages', ['language' => 'en']) }}" class="btn btn-primary">{{ trans('message.en') }}</a>
-                                    <br>
-                                    <a href="{{ route('change-languages', ['language' => 'vi']) }}" class="btn btn-primary">{{ trans('message.vi') }}</a>
-                                </div>
-                            </li> --}}
                         </ul>
                     </nav>
                 </div>

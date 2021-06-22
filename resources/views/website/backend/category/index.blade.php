@@ -12,7 +12,7 @@
                     <div class="col-sm-12">
                         <div class="card-box table-responsive">
                             <a href="{{ route('categories.create') }}"
-                                class="btn btn-success">{{ trans('message.create_category') }}</a>
+                                class="btn btn-outline-primary add-category-admin">{{ trans('message.create_category') }}</a>
                             <div id="datatable-responsive_wrapper"
                                 class="dataTables_wrapper container-fluid dt-bootstrap no-footer">
                                 <div class="row">
@@ -41,15 +41,15 @@
                                                     <tr role="row" class="odd">
                                                         <td>{{ $item->name }}</td>
                                                         <td class="td-body d-flex">
-                                                            <a class="btn btn-success"
+                                                            <a class="btn btn-outline-success"
                                                                 href="{{ route('categories.edit', [$item->id]) }}">
                                                                 {{ trans('message.edit') }}
                                                             </a>
-                                                            <a class="btn btn-primary"
+                                                            <a class="btn btn-outline-info"
                                                                 href="{{ route('categories.show', [$item->id]) }}">
                                                                 {{ trans('message.children') }}
                                                             </a>
-                                                            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#category{{ $item->id }}">
+                                                            <button type="submit" class="btn btn-outline-danger" data-toggle="modal" data-target="#category{{ $item->id }}">
                                                                 {{ trans('message.delete') }}
                                                             </button>
                                                         </td>
@@ -72,7 +72,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">{{ trans('message.modal_title_delete') }}</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">{{ $item->name }}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -83,11 +83,11 @@
                             @csrf
                             @method('DELETE')
                         </form>
-                        <span class="text-dark h5">{{ trans('message.want_delete') }}</span>
+                        <span> {{ trans('message.want_to_delete') }}</span>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('message.close') }}</button>
-                        <button form="form{{ $item->id }}" type="submit" class="btn btn-primary">{{ trans('message.confirm') }}</button>
+                        <button form="form{{ $item->id }}" type="submit" class="btn btn-danger">{{ trans('message.save_change') }}</button>
                     </div>
                 </div>
             </div>

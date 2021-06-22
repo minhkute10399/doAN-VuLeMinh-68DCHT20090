@@ -83,9 +83,8 @@
                                                     </td>
                                                     <td>{{ date('M d ,Y', strtotime($user->created_at)) }} {{ trans('message.at') }} {{ date('g:ia', strtotime($user->created_at)) }}</td>
                                                     <td>{{ date('M d ,Y', strtotime($user->updated_at)) }} {{ trans('message.at') }} {{ date('g:ia', strtotime($user->updated_at)) }}</td>
-                                                    {{-- <td>{{ $user->banned_until }}</td> --}}
                                                     <td class="edit_list_user">
-                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit{{ $user->id }}">
+                                                        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#edit{{ $user->id }}">
                                                            {{ trans('message.reject') }}
                                                         </button>
                                                     </td>
@@ -118,7 +117,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">{{ trans('messsage.banned_at') }}<span class="required">*</span>
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">{{ trans('message.banned_at') }}<span class="required"></span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
                                     <input type="date" id="status" required="required" class="form-control " name="banned_until" value="{{ $user->banned_until }}">

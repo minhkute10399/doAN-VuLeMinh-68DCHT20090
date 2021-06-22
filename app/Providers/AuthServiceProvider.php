@@ -37,6 +37,11 @@ class AuthServiceProvider extends ServiceProvider
                 return true;
             }
         });
-        //
+
+        Gate::define('admin_check', function ($user) {
+            if ($user->role_id === config('role.admin')) {
+                return true;
+            }
+        });
     }
 }

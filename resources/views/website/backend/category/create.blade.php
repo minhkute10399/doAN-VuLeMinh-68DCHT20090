@@ -16,7 +16,7 @@
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">{{ trans('message.name') }}<span class="required"></span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="name" required="required" class="form-control " name="name">
+                            <input type="text" id="name" required="required" class="form-control " name="name" autocomplete="off">
                         </div>
                         <select class="form-control" name="parent_id">
                             <option value="{{ config('category.parent') }}">---{{ trans('message.category') }}---</option>
@@ -28,8 +28,8 @@
                     <div class="ln_solid"></div>
                     <div class="item form-group">
                         <div class="col-md-6 col-sm-6 offset-md-3">
-                            <a href="{{ route('categories.index') }}" class="btn btn-primary">{{ trans('message.back') }}</a>
-                            <button type="submit" class="btn btn-success">{{ trans('message.submit') }}</button>
+                            <a href="{{ url()->previous() }}" class="btn btn-outline-primary">{{ trans('message.back') }}</a>
+                            <button type="submit" class="btn btn-outline-success">{{ trans('message.submit') }}</button>
                         </div>
                     </div>
                 </form>
