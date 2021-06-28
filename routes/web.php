@@ -27,6 +27,8 @@ Route::group(['middleware' => ['localization']], function () {
         Route::resource('/categories', 'CategoryController');
         Route::resource('/manageUser', 'UserController');
         Route::get('/blacklistUser', 'UserController@getBlackListUser')->name('blacklistUser');
+        Route::get('searchAccount', 'UserController@searchAccountAdmin')->name('searchAccount');
+        Route::get('searchCourse', 'CourseController@searchCourseAdmin')->name('searchCourse');
     });
     Route::get('/changeLanguage/{language}', 'HomeController@changeLanguage')->name('change-language');
     Route::resource('home', 'ClientController');
@@ -49,6 +51,8 @@ Route::group(['middleware' => ['localization']], function () {
     Route::get('exercises/{id}', 'ProfileController@showExerciseByTeacher')->name('exercises');
     Route::post('addExercise', 'ProfileController@addExerciseByTeacher')->name('addexercise');
     Route::resource('sendExercise', 'ExerciseController');
+    Route::get('search', 'ClientController@searchCourse')->name('search');
+    Route::get('viewCategory/{id}', 'ClientController@viewCategory')->name('subject');
     // Route::get('detailManageCourse/{id}', 'ProfileController');
 });
 

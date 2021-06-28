@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SearchAccountAdminRequest;
+use App\Http\Requests\SearchCourseRequest;
 use App\Http\Requests\StoreCommentCourse;
 use App\Models\Courses;
 use App\Models\User;
@@ -20,6 +22,13 @@ class UserController extends Controller
         $users = User::where('status', config('status.active'))->paginate(7);
 
         return view('website.backend.users.index', compact('users'));
+    }
+
+    public function searchAccountAdmin(SearchAccountAdminRequest $request)
+    {
+        $user = User::where('name', 'LIKE', '%' .$request->search_account. '%')->get();
+
+        return view('website.backend.users.search', compact('user'));
     }
 
     public function getBlackListUser()

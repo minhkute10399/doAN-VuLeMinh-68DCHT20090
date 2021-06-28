@@ -138,4 +138,8 @@ return [
     'submit' => 'Gửi',
     'children' => 'Xem các lớp',
     'banned_at' => 'Ngày cấm',
+    'search_course' => 'Tìm kiếm khóa học',
+    'search' => 'Tìm kiếm',
+    'searching_for' => 'Tìm kiếm',
+    'search_account' => 'Tìm kiếm tài khoản',
 ];

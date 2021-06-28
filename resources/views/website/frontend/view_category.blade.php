@@ -108,7 +108,7 @@
                     <h5>{{ trans('message.search') }}: </h5>
                 </div>
                 <div class="search-item-course">
-                    <form action="{{ route('search') }}" method="GET" id="search_course">
+                    <form action="{{ route('search') }}" method="POST" id="search_course">
                         @csrf
                         <input type="text" name="search" class="form-control float-right search"
                             placeholder="{{ trans('message.search_course') }}">
@@ -143,15 +143,15 @@
         </div>
         <div class="right-course">
             <section>
-                <h4 class="h4-allcourse">{{ trans('message.all_course') }}</h4>
+                <h2>{{ trans('message.searching_for') }}: "{{ $category->name }}"</h2>
             </section>
             <div class="section-subject">
-                @foreach ($courses as $course)
+                @foreach ($category->courses as $course)
                     <section class="section">
                         <div class="subject">
                             <div class="subject-class">
                                 {{-- <div class="img-subject-class" id="img" data-img="{{ config('image_path.images') .'/'. $course->images }}"></div> --}}
-                                <img src="{{ config('image_path.images') . '/' . $course->images }}" alt=""
+                                <img src="{{ asset(config('image_path.images') . '/' . $course->images) }}" alt=""
                                     class="img-subject-class">
                             </div>
                             <div class="content-popular-class">
@@ -175,20 +175,17 @@
                                         <li class="type">
                                             @foreach ($course->lessons as $key => $lesson)
                                                 @if ($key == 0)
-                                                    <a href="{{ route('lessons.show', [$lesson->id]) }}"
-                                                        class="free-course">{{ trans('message.continue') }}</a>
+                                                    <a href="{{ route('lessons.show', [$lesson->id]) }}" class="free-course">{{ trans('message.continue') }}</a>
                                                 @endif
                                             @endforeach
                                         </li>
                                     @elseif (Auth::check())
                                         <li class="type">
-                                            <a href="{{ route('singleCourse', [$course->id]) }}"
-                                                class="free-course">{{ trans('message.free_course') }}</a>
+                                            <a href="{{ route('singleCourse', [$course->id]) }}" class="free-course">{{ trans('message.free_course') }}</a>
                                         </li>
                                     @else
                                         <li class="type">
-                                            <a href="{{ route('singleCourse', [$course->id]) }}"
-                                                class="free-course">{{ trans('message.free_course') }}</a>
+                                            <a href="{{ route('singleCourse', [$item->id]) }}" class="free-course">{{ trans('message.free_course') }}</a>
                                         </li>
                                     @endif
                                 </ul>
@@ -197,49 +194,6 @@
                     </section>
                 @endforeach
             </div>
-            <div class="pagination-link">
-                {{ $courses->links() }}
-            </div>
         </div>
-
     </div>
-    <footer>
-        <div class="main-footer">
-            <div class="description">
-                <img src="{{ asset('edufield/assets/img/logo.png') }}" alt="" class="logo-home">
-                <p>{{ trans('message.banner_5') }}<br>
-                    {{ trans('message.banner_6') }}<br>{{ trans('message.banner_7') }}
-                </p>
-
-                <p>
-                    {{ trans('message.banner_8') }}<br>{{ trans('message.banner_9') }}
-                </p>
-                <br>
-                <p>
-                    {{ trans('message.banner_10') }}
-                </p>
-            </div>
-            <div class="description">
-                <h6>{{ trans('message.contact') }}</h6>
-                <div class="link">
-                    <a href="#">facebook.com</a>
-                    <a href="#">Twitter.com</a>
-                </div>
-            </div>
-            <div class="description">
-                <h6>{{ trans('message.support') }}</h6>
-                <div class="link">
-                    <a href="#">Hỗ trợ</a>
-                    <a href="#">Đóng góp</a>
-                </div>
-            </div>
-            <div class="description">
-                <h6>{{ trans('message.playground') }}</h6>
-                <div class="link">
-                    <a href="#">Đố vui</a>
-                    <a href="#">Chữa bài</a>
-                </div>
-            </div>
-        </div>
-    </footer>
 @endsection

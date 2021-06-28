@@ -11,7 +11,7 @@
             <div class="first-menu">
                 <ul>
                     <li><a href="{{ route('home.index') }}" class="active">{{ trans('message.home') }}</a></li>
-                    <li><a href="#">{{ trans('message.course') }}</a></li>
+                    <li><a href="{{ route('allCourses') }}">{{ trans('message.course') }}</a></li>
                     <li><a href="#">{{ trans('message.teacher') }}</a></li>
                 </ul>
             </div>
@@ -74,7 +74,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="flex-link-display">
+                                    <a href="{{ route('profile.index') }}" class="flex-link-display">
                                         <div><i class="fas fa-cog"></i></div>
                                         <label>{{ trans('message.setting') }}</label>
                                     </a>
@@ -210,7 +210,11 @@
                     <p class="course-detail-register">{{ trans('message.need_register') }}</p>
                 @endif
                 @if (Auth::check() && $course->users->contains(Auth::user()))
-                    <a href="{{ route('lessons.show', [$course->id]) }}" class="course-detail-learn-now">{{ trans('message.continue') }}</a>
+                    @foreach ($course->lessons as $key => $lesson)
+                        @if ($key == 0)
+                            <a href="{{ route('lessons.show', [$lesson->id]) }}" class="course-detail-learn-now">{{ trans('message.continue') }}</a>
+                        @endif
+                    @endforeach
                 @elseif(Auth::check())
                     <form action="{{ route('manageCourse.store') }}" method="POST">
                         @csrf

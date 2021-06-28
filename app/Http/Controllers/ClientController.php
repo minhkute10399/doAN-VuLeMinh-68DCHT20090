@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SearchCourseRequest;
+use App\Models\Category;
 use App\Models\Courses;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -26,8 +28,25 @@ class ClientController extends Controller
     public function viewAllCourses()
     {
         $courses = Courses::orderBy('created_at', 'desc')->paginate(config('paginateHome.paginateHome'));
+        $categories = Category::all()->load('children');
 
-        return view('website.frontend.all_courses', compact('courses'));
+        return view('website.frontend.all_courses', compact('courses', 'categories'));
+    }
+
+    public function viewCategory($id)
+    {
+        $category = Category::findOrFail($id)->load('courses');
+        $categories = Category::all()->load('children');
+
+        return view('website.frontend.view_category', compact('category', 'categories'));
+    }
+    public function searchCourse(SearchCourseRequest $request)
+    {
+        $search = $request->search;
+        $course = Courses::where('name', 'LIKE', '%' .$search. '%')->paginate(config('paginateHome.paginateHome'));
+        $categories = Category::all()->load('children');
+
+        return view('website.frontend.search_course', compact('course', 'categories', 'search'));
     }
 
     public function showSingleCourse($id)

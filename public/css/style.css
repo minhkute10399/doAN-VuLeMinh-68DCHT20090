@@ -69,6 +69,7 @@ header {
     align-items: center;
     justify-content: center;
     padding: 0.5rem 3rem;
+    margin: 0;
 }
 .first-menu ul li {
     margin-right: 3rem;
@@ -547,8 +548,8 @@ dl, ol, ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 0;
-
+    padding: 3px 0;
+    margin: 0;
 }
 .info-container {
     height: 100%;
@@ -1964,6 +1965,112 @@ label:not(.form-check-label):not(.custom-file-label) {
 }
 .name-admin > a {
     color: #212529;
+}
+.search-lesson-input {
+    margin: 20px 14px;
+}
+.all-course {
+    display: flex;
+
+}
+.search {
+    border: 1px solid rgba(27, 25, 25, 0.432);
+    border-radius: 5px;
+    margin: 0;
+}
+.left-course {
+    color: black;
+    width: 18%;
+}
+.category-children {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.children-tag {
+    display: flex;
+}
+.children-tag :hover {
+    cursor: pointer;
+    transform: translateY(-0.3rem);
+    transition: all 0.3s ease-in-out;
+    color: black;
+}
+.children-tag > a > i {
+    padding: 8px 10px;
+    color: #be4bdb;
+}
+.text-search > h5 {
+    font-weight: 700;
+    padding: 10px 0;
+}
+.category-children > h5 {
+    font-weight: 700;
+    padding: 10px 0;
+}
+.children-tag > a {
+    text-decoration: none;
+    color: #69655f;
+    padding: 8px 0;
+}
+.right-course {
+    width: 82%;
+    /* padding: 40px 0 0 0; */
+    margin: 40px 0 0 0px;
+}
+.right-course > section > h2 {
+    font-weight: 700;
+    padding: 10px 0;
+    text-align: center;
+    margin: 0 0 30px 0;
+    color: #1dbfaf;
+}
+.h4-allcourse {
+    font-weight: 700;
+    padding: 10px 0;
+    text-align: center;
+    margin: 0 0 30px 0;
+    color:#1dbfaf;
+}
+.courseItem-wrapper {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: background-color .3s linear;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    height: 205px;
+    width: 400px;
+    margin: 10px 20px;
+}
+.item-thumblock {
+    position: relative;
+    overflow: hidden;
+}
+.item-right-course {
+    display: flex;
+    flex-wrap: wrap;
+}
+.search-item-course {
+    display: flex;
+}
+.search-account {
+    margin: 0 !important;
+    padding: 7px 20px!important;
+}
+.search_course_item  {
+    padding: 0px 20px!important;
+    border-radius: 5px!important;
+}
+.pagination-link {
+    margin: 20px 0;
+}
+.odd > td {
+    text-align: center;
 }
 footer {
     background-color: #292929;
