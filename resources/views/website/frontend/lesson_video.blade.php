@@ -11,7 +11,7 @@
             <div class="first-menu">
                 <ul>
                     <li><a href="{{ route('home.index') }}" class="active">{{ trans('message.home') }}</a></li>
-                    <li><a href="#">{{ trans('message.course') }}</a></li>
+                    <li><a href="{{ route('allCourses') }}">{{ trans('message.course') }}</a></li>
                     <li><a href="#">{{ trans('message.teacher') }}</a></li>
                 </ul>
             </div>

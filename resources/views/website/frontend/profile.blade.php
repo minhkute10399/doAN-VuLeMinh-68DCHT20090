@@ -34,8 +34,6 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">{{ trans('message.change_picture') }}</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                                aria-hidden="true"><i class="fas fa-times"></i></span></button>
                                     </div>
                                     <div class="modal-body">
                                         <form action="{{ route('profile.update', [$user->id]) }}" method="POST"
@@ -54,8 +52,8 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" form="avatar-change"
-                                            class="btn btn-primary">{{ trans('message.update') }}</button>
-                                        <button type="button" class="btn btn-secondary"
+                                            class="btn btn-outline-success">{{ trans('message.update') }}</button>
+                                        <button type="button" class="btn btn-outline-secondary"
                                             data-dismiss="modal">{{ trans('message.close') }}</button>
                                     </div>
                                 </div>

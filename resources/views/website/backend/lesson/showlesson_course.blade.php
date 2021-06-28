@@ -17,7 +17,7 @@
         <div class="x_content">
             <div class="row">
                 <div class="col-sm-2">
-                    <div class="input-group input-group-sm">
+                    <div class="input-group input-group-sm search-lesson-input">
                         <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
                         <div class="input-group-append">
@@ -66,11 +66,11 @@
                                                     <td>{{ date('M d ,Y', strtotime($lesson->created_at)) }} {{ trans('message.at') }} {{ date('g:ia', strtotime($lesson->created_at)) }}</td>
                                                     <td>{{ date('M d ,Y', strtotime($lesson->updated_at)) }} {{ trans('message.at') }} {{ date('g:ia', strtotime($lesson->updated_at)) }}</td>
                                                     <td class="edit_list_user">
-                                                        <a href="{{ route('adminLesson', [$lesson->id]) }}" class="btn btn-primary">
+                                                        <a href="{{ route('adminLesson', [$lesson->id]) }}" class="btn btn-outline-primary">
                                                             {{ trans('message.show_video') }}
                                                         </a>
 
-                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit{{ $lesson->id }}">
+                                                        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#edit{{ $lesson->id }}">
                                                            {{ trans('message.reject') }}
                                                         </button>
                                                     </td>

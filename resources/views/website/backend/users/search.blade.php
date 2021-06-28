@@ -20,8 +20,9 @@
                         <div class="input-group input-group-sm">
                             <form action="{{ route('searchAccount') }}" method="GET" id="search_account">
                                 @csrf
-                                <input type="text" name="search_account" class="form-control float-right" placeholder="{{ trans('message.search_account') }}">
-                                @error('search')
+                                <input type="text" name="search_account" class="form-control float-right"
+                                    placeholder="{{ trans('message.search_account') }}">
+                                @error('search_account')
                                     <p class="error-message">{{ $message }}</p>
                                 @enderror
                             </form>
@@ -96,16 +97,16 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($users as $index => $user)
+                                                @foreach ($user as $index => $item)
                                                     <tr role="row" class="odd">
                                                         <td>{{ $index++ }}</td>
-                                                        <td>{{ $user->name }}</td>
-                                                        <td><img src="{{ asset(config('image_path.images') . '/' . $user->images) }}"
+                                                        <td>{{ $item->name }}</td>
+                                                        <td><img src="{{ asset(config('image_path.images') . '/' . $item->images) }}"
                                                                 alt="" class="list_image"></td>
-                                                        <td>{{ $user->email }}</td>
-                                                        <td>{{ $user->role->name }}</td>
+                                                        <td>{{ $item->email }}</td>
+                                                        <td>{{ $item->role->name }}</td>
                                                         <td>
-                                                            @if ($user->status != config('status.active'))
+                                                            @if ($item->status != config('status.active'))
                                                                 <div class="inactive_user">
                                                                     {{ trans('message.inactive') }}</div>
                                                             @else
@@ -113,15 +114,15 @@
                                                                 </div>
                                                             @endif
                                                         </td>
-                                                        <td>{{ date('M d ,Y', strtotime($user->created_at)) }}
+                                                        <td>{{ date('M d ,Y', strtotime($item->created_at)) }}
                                                             {{ trans('message.at') }}
-                                                            {{ date('g:ia', strtotime($user->created_at)) }}</td>
-                                                        <td>{{ date('M d ,Y', strtotime($user->updated_at)) }}
+                                                            {{ date('g:ia', strtotime($item->created_at)) }}</td>
+                                                        <td>{{ date('M d ,Y', strtotime($item->updated_at)) }}
                                                             {{ trans('message.at') }}
-                                                            {{ date('g:ia', strtotime($user->updated_at)) }}</td>
+                                                            {{ date('g:ia', strtotime($item->updated_at)) }}</td>
                                                         <td class="edit_list_user">
                                                             <button type="button" class="btn btn-outline-danger"
-                                                                data-toggle="modal" data-target="#edit{{ $user->id }}">
+                                                                data-toggle="modal" data-target="#edit{{ $item->id }}">
                                                                 {{ trans('message.reject') }}
                                                             </button>
                                                         </td>
@@ -129,7 +130,7 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
-                                        <div>{{ $users->links() }}</div>
+                                        {{-- <div>{{ $user->links() }}</div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -139,16 +140,16 @@
             </div>
         </div>
     </div>
-    @foreach ($users as $user)
-        <div class="modal fade" id="edit{{ $user->id }}" tabindex="-1" role="dialog"
+    @foreach ($user as $item)
+        <div class="modal fade" id="edit{{ $item->id }}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <form action="{{ route('manageUser.update', [$user->id]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('manageUser.update', [$item->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">{{ $user->name }}</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">{{ $item->name }}</h5>
                             {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button> --}}
@@ -160,14 +161,14 @@
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
                                     <input type="date" id="status" required="required" class="form-control "
-                                        name="banned_until" value="{{ $user->banned_until }}">
+                                        name="banned_until" value="{{ $item->banned_until }}">
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary"
                                 data-dismiss="modal">{{ trans('message.close') }}</button>
-                            <button type="submit" d-form="block{{ $user->id }}"
+                            <button type="submit" d-form="block{{ $item->id }}"
                                 class="btn btn-danger">{{ trans('message.reject') }}</button>
                         </div>
                     </div>

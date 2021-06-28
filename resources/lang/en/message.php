@@ -139,4 +139,8 @@ return [
     'submit' => 'Submit',
     'children' => 'Children',
     'banned_at' => 'Banned at',
+    'search_course' => 'Search course',
+    'search' => 'Search',
+    'searching_for' => 'Searching for',
+    'search_account' => 'Search account',
 ];
