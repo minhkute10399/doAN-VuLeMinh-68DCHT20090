@@ -49,9 +49,32 @@ class ClientController extends Controller
         return view('website.frontend.search_course', compact('course', 'categories', 'search'));
     }
 
+    public function allTeacher()
+    {
+        $teachers = User::where('role_id', config('role.teacher'))->paginate(config('paginateHome.paginateHome'));
+        $teachers->load('courses');
+
+        return view('website.frontend.all_teacher', compact('teachers'));
+    }
+
+    public function searchTeacher(Request $request) {
+        if ($request->ajax()) {
+            $data = User::where('role_id', config('role.teacher'))
+                ->where('name', 'like', '%' .$request->searchInput. '%')
+                ->get();
+        }
+        if ($data) {
+            return view('website.frontend.search_ajax_teacher', compact('data'));
+        }
+
+        return response()->json([
+            'data' => $data,
+        ]);
+    }
+
     public function showSingleCourse($id)
     {
-        //show singlge course detail
+        //Show single course detail
         $course = Courses::findOrFail($id)->load(['comments', 'users']);
 
         return view('website.frontend.single_course', compact('course'));

@@ -53,6 +53,8 @@ Route::group(['middleware' => ['localization']], function () {
     Route::resource('sendExercise', 'ExerciseController');
     Route::get('search', 'ClientController@searchCourse')->name('search');
     Route::get('viewCategory/{id}', 'ClientController@viewCategory')->name('subject');
+    Route::get('teachers', 'ClientController@allTeacher')->name('teachers');
+    Route::post('searchTeacher', 'ClientController@searchTeacher')->name('searchTeacher');
     // Route::get('detailManageCourse/{id}', 'ProfileController');
 });
 

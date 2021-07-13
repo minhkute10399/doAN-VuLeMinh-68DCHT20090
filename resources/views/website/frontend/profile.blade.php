@@ -108,7 +108,8 @@
                     <a href="" class="user-detail-link">
                         <section class="detail-item">
                             <span>{{ trans('message.registered_course') }}</span>
-                            <span class="detail-description">{{ $user->courses->count() }} {{ trans('message.course') }}</span>
+                            <span class="detail-description">{{ $user->courses->count() }}
+                                {{ trans('message.course') }}</span>
                         </section>
                         <div>
                             <i class="fas fa-chevron-right arrow-color"></i>
@@ -124,18 +125,7 @@
         </section>
     </section>
     <script src="{{ asset('js/preview-img.js') }}"></script>
-    <script src="{{ asset('js/chartjs/chart.js') }}"></script>
-    <script>
-        $(document).ready(function(){
-            const url = window.location.href;
-            $.ajax({
-                type: "GET",
-                url: url + "/chart",
-                cache: false,
-                success: function (lessonsOfUser) {
-                    console.log(lessonsOfUser);
-                }
-            });
-        });
-    </script>
+    {{-- <script src="{{ asset('bower_components/chart.js/dist/Chart.js') }}"></script> --}}
+    <script src="{{ asset('js/Chart.js') }}"></script>
+    <script src="{{ asset('js/preview.js') }}"></script>
 @endsection

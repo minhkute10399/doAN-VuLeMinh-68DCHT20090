@@ -143,4 +143,6 @@ return [
     'search' => 'Search',
     'searching_for' => 'Searching for',
     'search_account' => 'Search account',
+    'all_teacher' => 'All teachers',
+    'search_teacher' => 'Search teacher',
 ];

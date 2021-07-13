@@ -3,5 +3,6 @@
     "/css/app.css": "/css/app.css",
     "/js/backgroundscript.js": "/js/backgroundscript.js",
     "/js/chartjs/chart.js": "/js/chartjs/chart.js",
+    "/js/preview.js": "/js/preview.js",
     "/js/preview-img.js": "/js/preview-img.js"
 }

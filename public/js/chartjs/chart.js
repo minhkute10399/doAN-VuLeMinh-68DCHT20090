@@ -86,23 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/chart.js":
-/*!*******************************!*\
-  !*** ./resources/js/chart.js ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var url = window.location.href;
-$.ajax({
-  type: "GET",
-  url: url + "/chart",
-  cache: false,
-  success: function success(lessons) {}
-});
-
-/***/ }),
-
 /***/ 3:
 /*!*************************************!*\
   !*** multi ./resources/js/chart.js ***!
@@ -110,7 +93,7 @@ $.ajax({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/doAN-VuLeMinh-68DCHT20090/resources/js/chart.js */"./resources/js/chart.js");
+!(function webpackMissingModule() { var e = new Error("Cannot find module '/opt/lampp/htdocs/doAN-VuLeMinh-68DCHT20090/resources/js/chart.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 
 
 /***/ })

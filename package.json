@@ -40,6 +40,7 @@
     },
     "homepage": "https://github.com/minhkute10399/doAN-VuLeMinh-68DCHT20090#readme",
     "dependencies": {
-        "chart.js": "^3.2.1"
+        "chart.js": "^3.2.1",
+        "requirejs": "^2.3.6"
     }
 }
