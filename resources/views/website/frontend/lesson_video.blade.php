@@ -74,7 +74,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="flex-link-display">
+                                    <a href="{{ route('profile.index') }}" class="flex-link-display">
                                         <div><i class="fas fa-cog"></i></div>
                                         <label>{{ trans('message.setting') }}</label>
                                     </a>
@@ -235,11 +235,9 @@
                                             @foreach ($lesson->exercises as $key => $exercise)
                                                 <button type="button" data-toggle="modal"
                                                     data-target="#lesson{{ $exercise->id }}" class="exercise-item">
-                                                    @foreach ($exercise->users as $user)
-                                                        @if ($user->pivot->url)
+                                                        @if ($exercise->users->contains(Auth::user()))
                                                             <i class="fas fa-check color-success position-check"></i>
                                                         @endif
-                                                    @endforeach
                                                     <span>{{ $key + 1 }}</span>
                                                 </button>
                                             @endforeach
@@ -257,7 +255,6 @@
         $(document).ready(function() {
             $(document).on("click", ".lesson-item", function() {
                 let dataUrl = this.dataset.url;
-                console.log(dataUrl);
                 $.ajax({
                     type: "GET",
                     url: dataUrl,

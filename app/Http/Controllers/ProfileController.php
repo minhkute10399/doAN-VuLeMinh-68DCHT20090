@@ -63,20 +63,20 @@ class ProfileController extends Controller
 
     public function getDataUserChart()
     {
-        // $lessons = Lesson::->load('lessons')
-        //     ->get()
-        //     ->groupBy(function($query) {
-        //         return Carbon::parse($query->created_at)->format('m');
-        //     });
-        // foreach ($lessons as $key => $item) {
-        //     $lessons[$key] = $item->count();
-        // }
+        $sevenDayAgo = Carbon::now()->subDays(6);
+        $day = Carbon::now()->day;
         $data = [];
-        $month = Carbon::now()->month();
-        $lessonsOfUser = Auth::user()->load(['lessons' => function($query) use ($month){
-            $query->where('lesson_user.created_at', $month);
+        $lessonsOfUser = Auth::user()->load(['lessons' => function ($query) use ($sevenDayAgo) {
+            $query->where([['lesson_user.created_at', '>', $sevenDayAgo]]);
         }]);
-        return response()->json(compact('lessonsOfUser'));
+        $lessonsGroupByDay = $lessonsOfUser->lessons->groupBy(function ($item) {
+            return $item->pivot->created_at->format('d');
+        });
+        for ($index = $sevenDayAgo->day; $index <= $day; $index++) {
+            $data[$index] = array_key_exists($index, $lessonsGroupByDay->toArray()) ? $lessonsGroupByDay[$index]->count() : config('numer.default');
+        };
+
+        return response()->json($data);
     }
 
     public function showEmail() {

@@ -819,10 +819,27 @@ dl, ol, ul {
     color: #fff;
     margin-right: 0.3rem;
 }
+.type-teachers a {
+    text-decoration: none;
+    font-weight: 400;
+    line-height: 2rem;
+    padding: 0px 0.625rem;
+    font-size: 0.9rem;
+    border-radius: 1.2rem;
+    background: #B4320C;
+    color: #fff;
+    margin-right: 0.3rem;
+}
 .content-popular-class .type a:hover {
     cursor: pointer;
     transform: translateY(-0.3rem);
     transition: all 0.3s ease-in-out;
+}
+.type-teachers a:hover {
+    cursor: pointer;
+    transform: translateY(-0.3rem);
+    transition: all 0.3s ease-in-out;
+    color: #fff;
 }
 .content-popular-class p {
     flex: 1 1;
@@ -887,6 +904,16 @@ a:hover {
     align-items: center;
     margin-right: 15px;
     color: rgba(0,0,0,.6);
+}
+.type-teachers {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 15px;
+    color: rgba(0,0,0,.6);
+}
+.subject-teacher {
+    justify-content: flex-end !important;
 }
 .author-icon {
     width: 32px;
@@ -1545,6 +1572,9 @@ iframe {
     align-items: center;
     justify-content: center;
 }
+.position-avatar-container > i {
+    color: #fff;
+}
 .sidebar-header {
     text-align: left;
     margin: auto 0;
@@ -2071,6 +2101,43 @@ label:not(.form-check-label):not(.custom-file-label) {
 }
 .odd > td {
     text-align: center;
+}
+.teacher-banner {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    padding: 80px 0 0 0;
+    margin: 50px 0;
+}
+.teacher-banner > h5 {
+    color: #B4320C;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.teacher-banner > h1 {
+    margin-bottom: 0;
+    color: #777777;
+    font-size: 18px;
+    line-height: 1.8;
+}
+.teachers-center {
+    width: 70%;
+    margin: auto;
+    padding: 90px 0;
+}
+.search-teacher {
+    display: flex;
+    justify-content: center;
+}
+.search-teacher-input {
+    border: 1px solid rgba(27, 25, 25, 0.432);
+    border-radius: 5px;
+    margin: 0;
+    width: 400px;
+}
+#chart-container {
+    padding: 20px 0;
+    margin: 80px 0 0 20px;
 }
 footer {
     background-color: #292929;

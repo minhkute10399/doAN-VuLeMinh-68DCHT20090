@@ -142,4 +142,6 @@ return [
     'search' => 'Tìm kiếm',
     'searching_for' => 'Tìm kiếm',
     'search_account' => 'Tìm kiếm tài khoản',
+    'all_teacher' => 'Giáo viên',
+    'search_teacher' => 'Tìm kiếm giáo viên',
 ];

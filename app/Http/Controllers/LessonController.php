@@ -12,6 +12,10 @@ use voku\helper\ASCII;
 
 class LessonController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -59,10 +63,10 @@ class LessonController extends Controller
 
     public function showVideoLesson($id)
     {
-        $lesson = Lesson::findOrFail($id)->load('users', 'course');
-        if (!$lesson->users->contains(Auth::user())) {
+        $lesson = Lesson::findOrFail($id)->load('users', 'course', 'exercises');
+        if (!$lesson->users->contains(Auth::id())) {
             $lesson->users()->attach([
-                'user_id' => Auth::id(),
+                'user_id' => Auth::user()->id,
             ]);
         }
 

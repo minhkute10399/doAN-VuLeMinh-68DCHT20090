@@ -11,11 +11,12 @@
             <div class="first-menu">
                 <ul>
                     <li><a href="{{ route('home.index') }}" class="active">{{ trans('message.home') }}</a></li>
-                    <li><a href="#">{{ trans('message.course') }}</a></li>
-                    <li><a href="#">{{ trans('message.teacher') }}</a></li>
+                    <li><a href="{{ route('allCourses') }}">{{ trans('message.course') }}</a></li>
+                    <li><a href="{{ route('teachers') }}">{{ trans('message.teacher') }}</a></li>
                 </ul>
             </div>
         </div>
+
         <div class="second-menu">
             <ul class="action-ul">
                 @auth

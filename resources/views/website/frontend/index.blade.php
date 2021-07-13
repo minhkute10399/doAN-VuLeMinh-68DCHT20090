@@ -9,11 +9,11 @@
             <h5>{{ trans('message.banner_1') }}</h5>
             <h1>{{ trans('message.banner_2') }}</h1>
             <div class="button-header">
-                <a href="#" class="a-link">{{ trans('message.course') }}</a>
+                <a href="{{ route('allCourses') }}" class="a-link">{{ trans('message.course') }}</a>
             </div>
         </section>
     </div>
-    </div>
+
     <div class="container-main">
         <div class="icon-info">
             <div class="feature-icon">
@@ -50,7 +50,7 @@
                             <p>{{ $course->description }}</p>
                             <ul class="info-subject">
                                 <li class="author">
-                                    @foreach ($course->users->where('role_id', config('role.teacher')) as $user)
+                                    @foreach ($course->users->where('role_id', config('role.teacher'))->take(1) as $user)
                                         <a href="#">
                                             <img src="{{ asset(config('image_path.images') . '/' . $user->images) }}"
                                                 alt="" class="author-icon">{{ $user->name }}
