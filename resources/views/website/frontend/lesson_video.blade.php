@@ -271,40 +271,7 @@
         })
 
     </script>
-    <script>
-        $(document).on("click", ".button-comment", function() {
-            let content = $("#content").val();
-            let course_id = $("#course_id").val();
-            let urlStoreComment = $(this).attr("data-url");
-            $.ajax({
-                type: "POST",
-                url: urlStoreComment,
-                data: {
-                    "content": content,
-                    "course_id": course_id,
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(result) {
-                    $(".append").prepend(result);
-                    $("#content").val('');
-
-                    let count = $("#count-comment").text();
-                    let splitNumber = count.split(' ');
-                    let number = parseInt(splitNumber[0]) + 1;
-                    let countComment = number + " " + splitNumber[1];
-                    $("#count-comment").text(countComment);
-                },
-                error: function(error) {
-                    // console.log(error);
-                }
-            });
-        });
-
-    </script>
-
-
+    <script src="{{ asset('js/comment.js') }}"></script>
     <!-- Do Exercise -->
     @foreach ($lesson->exercises as $exercise)
         <div class="modal fade" id="lesson{{ $exercise->id }}" tabindex="-1" role="dialog"

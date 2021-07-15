@@ -17,4 +17,7 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/preview-img.js', 'public/js/preview-img.js')
     .js('resources/js/chart.js', 'public/js/chartjs')
     .js('resources/js/preview.js', 'public/js/preview.js')
+    .js('resources/js/bootstrap.js', 'public/js/bootstrap.js')
+    .js('resources/js/pusher.js', 'public/js/pusher.js')
+    .js('resources/js/comment.js', 'public/js/comment.js')
     .copy('node_modules/chart.js/dist/Chart.js', 'public/js');

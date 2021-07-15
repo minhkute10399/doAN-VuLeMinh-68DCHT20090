@@ -55,6 +55,8 @@ Route::group(['middleware' => ['localization']], function () {
     Route::get('viewCategory/{id}', 'ClientController@viewCategory')->name('subject');
     Route::get('teachers', 'ClientController@allTeacher')->name('teachers');
     Route::post('searchTeacher', 'ClientController@searchTeacher')->name('searchTeacher');
+    Route::get('current-user', 'CommentController@getCurrentUser')->name('currentUser');
     // Route::get('detailManageCourse/{id}', 'ProfileController');
 });
+Auth::routes();
 
