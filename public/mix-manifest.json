@@ -2,7 +2,10 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/js/backgroundscript.js": "/js/backgroundscript.js",
+    "/js/bootstrap.js": "/js/bootstrap.js",
     "/js/chartjs/chart.js": "/js/chartjs/chart.js",
+    "/js/comment.js": "/js/comment.js",
     "/js/preview.js": "/js/preview.js",
-    "/js/preview-img.js": "/js/preview-img.js"
+    "/js/preview-img.js": "/js/preview-img.js",
+    "/js/pusher.js": "/js/pusher.js"
 }

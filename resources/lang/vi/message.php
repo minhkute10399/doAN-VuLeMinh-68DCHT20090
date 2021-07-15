@@ -144,4 +144,6 @@ return [
     'search_account' => 'Tìm kiếm tài khoản',
     'all_teacher' => 'Giáo viên',
     'search_teacher' => 'Tìm kiếm giáo viên',
+    'content_notify' => 'Bạn nhận được một bình luận mới trong khóa học',
+    'title_notify' => 'Bình luận mới',
 ];

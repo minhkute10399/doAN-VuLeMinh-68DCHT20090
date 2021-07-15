@@ -12,7 +12,7 @@
                 <ul>
                     <li><a href="{{ route('home.index') }}" class="active">{{ trans('message.home') }}</a></li>
                     <li><a href="{{ route('allCourses') }}">{{ trans('message.course') }}</a></li>
-                    <li><a href="#">{{ trans('message.teacher') }}</a></li>
+                    <li><a href="{{ route('teachers') }}">{{ trans('message.teacher') }}</a></li>
                 </ul>
             </div>
         </div>
@@ -159,6 +159,9 @@
                             <div class="text-input-comment">
                                 {{-- <form action="" method="POST" id="comment-form">
                                     @csrf --}}
+                                    @foreach ($course->users->where('role_id', config('role.teacher'))->take(1) as $teacher)
+                                        <input type="hidden" name="teacher_id" value="{{ $teacher->id }}" id="teacher_id">
+                                    @endforeach
                                     <input type="hidden" name="course_id" value="{{ $course->id }}" id="course_id">
                                     <input type="text" placeholder="{{ trans('message.common_question') }}" name="content" autocomplete="off" id="content">
                                     @error('content')
@@ -286,38 +289,11 @@
             </div>
         </div>
     </footer>
+    <script src="{{ asset('js/comment.js') }}"></script>
+    <script defer src="{{ asset('js/bootstrap.js') }}"></script>
+    <script defer src="{{ asset('js/pusher.js') }}"></script>
     @jquery
     @toastr_js
     @toastr_render
-    <script>
-        $(document).on("click", ".button-comment", function () {
-            let content = $("#content").val();
-            let course_id = $("#course_id").val();
-            let urlStoreComment = $(this).attr("data-url");
-            $.ajax({
-                type: "POST",
-                url: urlStoreComment,
-                data: {
-                    "content": content,
-                    "course_id": course_id,
-                },
-                headers: {
-                    'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(result) {
-                    $(".append").prepend(result);
-                    $("#content").val('');
-
-                    let count = $("#count-comment").text();
-                    let splitNumber = count.split(' ');
-                    let number = parseInt(splitNumber[0]) + 1;
-                    let countComment = number + " " + splitNumber[1];
-                    $("#count-comment").text(countComment);
-                },
-                error: function(error) {
-                    // console.log(error);
-                }
-            });
-        });
-    </script>
 @endsection
+

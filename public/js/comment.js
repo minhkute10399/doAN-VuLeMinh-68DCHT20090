@@ -81,67 +81,58 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/preview.js":
+/***/ "./resources/js/comment.js":
 /*!*********************************!*\
-  !*** ./resources/js/preview.js ***!
+  !*** ./resources/js/comment.js ***!
   \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$(document).ready(function () {
-  var url = window.location.href;
+$(document).on("click", ".button-comment", function () {
+  var content = $("#content").val();
+  var course_id = $("#course_id").val();
+  var teacher_id = $("#teacher_id").val();
+  var urlStoreComment = $(this).attr("data-url");
   $.ajax({
-    type: 'GET',
-    url: '/chart',
-    cache: false,
+    type: "POST",
+    url: urlStoreComment,
+    data: {
+      "content": content,
+      "course_id": course_id,
+      "teacher_id": teacher_id
+    },
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
     success: function success(result) {
-      var myLabels = Object.keys(result);
-      var myData = Object.values(result);
-      var ctx = document.getElementById('myChart');
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: myLabels,
-          datasets: [{
-            label: 'Number of lessons',
-            data: myData,
-            backgroundColor: '#007575',
-            borderColor: '#007575',
-            borderWidth: 1,
-            fill: false,
-            tension: 0
-          }]
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true,
-                stepSize: 1
-              }
-            }]
-          }
-        }
-      });
+      $(".append").prepend(result);
+      $("#content").val('');
+      var count = $("#count-comment").text();
+      var splitNumber = count.split(' ');
+      var number = parseInt(splitNumber[0]) + 1;
+      var countComment = number + " " + splitNumber[1];
+      $("#count-comment").text(countComment);
+    },
+    error: function error(_error) {// console.log(error);
     }
   });
 });
 
 /***/ }),
 
-/***/ 4:
+/***/ 7:
 /*!***************************************!*\
-  !*** multi ./resources/js/preview.js ***!
+  !*** multi ./resources/js/comment.js ***!
   \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/doAN-VuLeMinh-68DCHT20090/resources/js/preview.js */"./resources/js/preview.js");
+module.exports = __webpack_require__(/*! /opt/lampp/htdocs/doAN-VuLeMinh-68DCHT20090/resources/js/comment.js */"./resources/js/comment.js");
 
 
 /***/ })

@@ -7,6 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
         {{-- <script src="{{ asset('bower_components/bootstrap/js/dist/modal.js') }}"></script> --}}
@@ -37,6 +38,8 @@
         {{-- <script src="{{ asset('js/scriptcustom.js') }}"></script> --}}
         <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
         <script src="{{ asset('bootstrap/none/js/bootstrap.bundle.min.js') }}"></script>
+        <script defer src="{{ asset('js/bootstrap.js') }}"></script>
+        <script defer src="{{ asset('js/pusher.js') }}"></script>
         <main class="py-4">
             @yield('content')
         </main>

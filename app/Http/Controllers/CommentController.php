@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CommentNotification;
 use App\Http\Requests\StoreCommentCourse;
 use App\Models\Comment;
 use App\Models\Courses;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,30 +41,45 @@ class CommentController extends Controller
     public function store(StoreCommentCourse $request)
     {
         $course = Courses::findOrFail($request->course_id);
+        $teacher = User::findOrFail($request->teacher_id);
         $data = [
             "message" => trans("message.success"),
         ];
-        $storeComment = Comment::create([
+        $channel = [
+            'id' => $request->teacher_id,
+            'title' => trans('message.title_notify'),
+            'content' => trans('message.content_notify'),
+            'course_id' => route('singleCourse', [$request->course_id]),
+        ];
+        event(new CommentNotification($channel));
+        $check = Comment::create([
             'content' => $request->content,
             'course_id' => $request->course_id,
             'user_id' => Auth::id(),
         ]);
 
-        if ($storeComment) {
+        if ($check) {
             $data['message'] = trans('message.success');
             $data['content'] = $request->content;
             $data['users'] = Auth::user()->name;
             $data['images'] = Auth::user()->images;
-            $data['created_at'] = $storeComment->created_at;
+            $data['created_at'] = $check->created_at;
 
             return view('website.frontend.storeCommentAjax', compact('data'));
         }
 
         return response()->json([
             'data' => $data,
+            'channel' => $channel,
         ]);
     }
 
+    public function getCurrentUser()
+    {
+        return response()->json([
+            'id' => Auth::id(),
+        ]);
+    }
     /**
      * Display the specified resource.
      *

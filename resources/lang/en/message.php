@@ -145,4 +145,6 @@ return [
     'search_account' => 'Search account',
     'all_teacher' => 'All teachers',
     'search_teacher' => 'Search teacher',
+    'content_notify' => 'You received a new comment on your course',
+    'title_notify' => 'New comment',
 ];
