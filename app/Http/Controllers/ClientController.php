@@ -25,6 +25,27 @@ class ClientController extends Controller
         return view('website.frontend.index', compact('courses', 'student'));
     }
 
+    public function getNotification()
+    {
+        $notifications = Auth::user()->notifications;
+        if ($notifications) {
+            return view('website.frontend.ajaxNotification', compact('notifications'));
+        }
+
+        return response()->json([
+            'notifications' => $notifications,
+        ]);
+    }
+
+    public function countUnreadNotification()
+    {
+        $countUnreadNotifications = Auth::user()->unreadNotifications()->count();
+
+        return response()->json([
+            'countUnreadNotification' => $countUnreadNotifications,
+        ]);
+    }
+
     public function viewAllCourses()
     {
         $courses = Courses::orderBy('created_at', 'desc')->paginate(config('paginateHome.paginateHome'));
@@ -40,6 +61,7 @@ class ClientController extends Controller
 
         return view('website.frontend.view_category', compact('category', 'categories'));
     }
+
     public function searchCourse(SearchCourseRequest $request)
     {
         $search = $request->search;
@@ -78,6 +100,17 @@ class ClientController extends Controller
         $course = Courses::findOrFail($id)->load(['comments', 'users']);
 
         return view('website.frontend.single_course', compact('course'));
+    }
+
+    public function viewCourseNotification($id, $notyid)
+    {
+        $unReadNotification = Auth::user()->notifications->where('id', $notyid)->first();
+        $course = Courses::findOrFail($id)->id;
+        if ($unReadNotification) {
+            $unReadNotification->markAsRead();
+
+            return redirect()->route('singleCourse', [$course]);
+        }
     }
 
     /**

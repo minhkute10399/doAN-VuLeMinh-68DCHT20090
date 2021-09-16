@@ -5,6 +5,8 @@
     "/js/bootstrap.js": "/js/bootstrap.js",
     "/js/chartjs/chart.js": "/js/chartjs/chart.js",
     "/js/comment.js": "/js/comment.js",
+    "/js/count-unread-notification.js": "/js/count-unread-notification.js",
+    "/js/dropdown-notification.js": "/js/dropdown-notification.js",
     "/js/preview.js": "/js/preview.js",
     "/js/preview-img.js": "/js/preview-img.js",
     "/js/pusher.js": "/js/pusher.js"

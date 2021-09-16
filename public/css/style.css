@@ -2139,6 +2139,65 @@ label:not(.form-check-label):not(.custom-file-label) {
     padding: 20px 0;
     margin: 80px 0 0 20px;
 }
+.dropdown-notification {
+    width: 500px;
+    height: auto;
+    background: #191919;
+    border-radius: 5px;
+    padding: 15px;
+    position: absolute;
+    top: 101%;
+    right: 96px;
+    display: none;
+}
+.dropdown-notification::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: 90%;
+    border: 15px solid rgba(255, 255, 255, .1);
+    border-color: transparent transparent #191919 transparent;
+}
+.notify-item {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.notify-img > img{
+    width: 2.7rem;
+    height: 2.7rem;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+.notify-info {
+    margin-left: 0.5rem;
+}
+.notify-info > h6 {
+    color: #fff;
+}
+.notify-info > span {
+    color: #777777;
+    font-size: 14px;
+}
+.notification-link-course {
+    margin: 20px 0;
+}
+.notify-info > p > strong {
+    color: #fff;
+}
+.dot {
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 0 0 30px;
+}
+.dot > span {
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    background-color: blue;
+}
 footer {
     background-color: #292929;
     padding: 5rem 0 5rem;

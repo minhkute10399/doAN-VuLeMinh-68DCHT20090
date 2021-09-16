@@ -40,6 +40,7 @@
         <script src="{{ asset('bootstrap/none/js/bootstrap.bundle.min.js') }}"></script>
         <script defer src="{{ asset('js/bootstrap.js') }}"></script>
         <script defer src="{{ asset('js/pusher.js') }}"></script>
+        {{-- <script defer src="{{ asset('js/dropdown-notification.js') }}"></script> --}}
         <main class="py-4">
             @yield('content')
         </main>

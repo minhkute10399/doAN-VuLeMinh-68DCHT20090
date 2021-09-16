@@ -7,7 +7,10 @@ use App\Http\Requests\StoreCommentCourse;
 use App\Models\Comment;
 use App\Models\Courses;
 use App\Models\User;
+use App\Notifications\NotificationComment;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
@@ -42,27 +45,40 @@ class CommentController extends Controller
     {
         $course = Courses::findOrFail($request->course_id);
         $teacher = User::findOrFail($request->teacher_id);
+        $countUnreadNotifications = $teacher->unreadNotifications()->count();
+        $user = Auth::user();
         $data = [
             "message" => trans("message.success"),
         ];
-        $channel = [
-            'id' => $request->teacher_id,
-            'title' => trans('message.title_notify'),
-            'content' => trans('message.content_notify'),
-            'course_id' => route('singleCourse', [$request->course_id]),
-        ];
-        event(new CommentNotification($channel));
-        $check = Comment::create([
-            'content' => $request->content,
-            'course_id' => $request->course_id,
-            'user_id' => Auth::id(),
-        ]);
-
+        if ($teacher->id === $user->id) {
+            $check = Comment::create([
+                'content' => $request->content,
+                'course_id' => $request->course_id,
+                'user_id' => $user->id,
+            ]);
+        } else {
+            $check = Comment::create([
+                'content' => $request->content,
+                'course_id' => $request->course_id,
+                'user_id' => $user->id,
+            ]);
+            $channel = [
+                'id' => $request->teacher_id,
+                'title' => trans('message.title_notify'),
+                'course_name' => $course->name,
+                'images' => $user->images,
+                'user' => $user->name,
+                'count_unread_notify' => $countUnreadNotifications,
+                'course_id' => $course->id,
+            ];
+            event(new CommentNotification($channel));
+            $sendNotification = $teacher->notify(new NotificationComment($channel));
+        }
         if ($check) {
             $data['message'] = trans('message.success');
             $data['content'] = $request->content;
-            $data['users'] = Auth::user()->name;
-            $data['images'] = Auth::user()->images;
+            $data['users'] = $user->name;
+            $data['images'] = $user->images;
             $data['created_at'] = $check->created_at;
 
             return view('website.frontend.storeCommentAjax', compact('data'));
