@@ -36,6 +36,7 @@ Route::group(['middleware' => ['localization']], function () {
     Route::resource('/manageCourse', 'CourseController');
     Route::get('/allCourses', 'ClientController@viewAllCourses')->name('allCourses');
     Route::get('singleCourse/{id}', 'ClientController@showSingleCourse')->name('singleCourse');
+    Route::get('/singeCourseNotification/{id}/{notyid}', 'ClientController@viewCourseNotification')->name('singleCourseNotification');
     Route::resource('/comment', 'CommentController');
     Route::get('/videoLesson/{id}', 'LessonController@showVideoLesson')->name('video');
     Route::resource('/lessons', 'LessonController');
@@ -57,6 +58,8 @@ Route::group(['middleware' => ['localization']], function () {
     Route::post('searchTeacher', 'ClientController@searchTeacher')->name('searchTeacher');
     Route::get('current-user', 'CommentController@getCurrentUser')->name('currentUser');
     // Route::get('detailManageCourse/{id}', 'ProfileController');
+    Route::get('getNotification', 'ClientController@getNotification')->name('getNotification');
+    Route::get('countUnreadNotify', 'ClientController@countUnreadNotification')->name('countUnreadNotify');
 });
 Auth::routes();
 

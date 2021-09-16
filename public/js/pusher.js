@@ -17380,7 +17380,8 @@ $.ajax({
   success: function success(e) {
     var id = e.id;
     Echo["private"]('comment-channel' + id).listen('CommentNotification', function (e) {
-      toastr.success(e.channel['title'], e.channel['content']);
+      toastr.success(e.channel['title']);
+      $(".number-notification").text(e.channel['count_unread_notify'] + 1);
     });
   }
 });

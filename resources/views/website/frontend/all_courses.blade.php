@@ -35,28 +35,25 @@
                     <div class="action-container">
                         <div class="notification-wrap">
                             <div class="bell-notification-container">
-                                <span class="number-notification">1</span>
+                                <span class="number-notification">{{ Auth::user()->unreadNotifications()->groupBy('notifiable_type')->count() }}</span>
                                 <i class="fas fa-bell menu-item" id="btn-dropdown-notification"></i>
                             </div>
 
                             <div class="dropdown-notification" id="notification-content">
-                                {{-- @foreach ($requestsOfUser as $request) --}}
-                                <div class="notify-item">
-                                    <div class="notify-img">
-                                        {{-- @if ($request->mentor->image)
-                                                <img src="{{ asset(config('img.img_path') . $request->mentor->image->url) }}" alt="">
-                                            @else
-                                                <img src="{{ asset(config('title.avatar_default')) }}" alt="">
-                                            @endif --}}
-                                    </div>
-                                    <div class="notify-info">
-                                        {{-- <p>
-                                                @lang('label.request_user', ['mentor_name' => $request->mentor->name, 'lesson' => $request->lesson->title, 'course' => $request->lesson->course->name, 'lesson_link' => route("course.lesson", [$request->lesson->id])])
-                                            </p> --}}
-                                        {{-- <span class="notify-action" data-toggle="modal" data-target="#request{{ $request->id }}">@lang('label.rate')</span> --}}
-                                    </div>
-                                </div>
-                                {{-- @endforeach --}}
+                                @foreach (Auth::user()->notifications as $teacher)
+                                    <a href="{{ route('singleCourseNotification', [$teacher->data['course_id'], $teacher->id] ) }}" class="notification-link-course">
+                                        <div class="notify-item">
+                                            <div class="notify-img">
+                                                <img src="{{ asset(config('image_path.images') .'/'. $teacher->data['images']) }}" alt="">
+                                            </div>
+                                            <div class="notify-info">
+                                                <h6>{{ $teacher->data['user'] }}</h6>
+                                                <p>{{ trans('message.left_comment') }} <strong>{{ $teacher->data['course_name'] }}</strong></p>
+                                                <span>{{ $teacher->created_at->diffForHumans() }}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                @endforeach
                             </div>
                         </div>
                         <div class="parent-menu">
@@ -162,7 +159,7 @@
                                 <p>{{ $course->description }}</p>
                                 <ul class="info-subject">
                                     <li class="author">
-                                        @foreach ($course->users->where('role_id', config('role.teacher')) as $user)
+                                        @foreach ($course->users->where('role_id', config('role.teacher'))->take(1) as $user)
                                             <a href="#">
                                                 <img src="{{ asset(config('image_path.images') . '/' . $user->images) }}"
                                                     alt="" class="author-icon">{{ $user->name }}

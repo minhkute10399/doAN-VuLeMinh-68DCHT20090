@@ -98,7 +98,7 @@
                                                         <td><img src="{{ asset(config('image_path.images') . '/' . $course->images) }}"
                                                                 alt="" class="list_image"></td>
                                                         <td>{{ $course->category->name }}</td>
-                                                        @foreach ($course->users->where('role_id', config('role.teacher')) as $teacher)
+                                                        @foreach ($course->users->where('role_id', config('role.teacher'))->take(1) as $teacher)
                                                             <td>{{ $teacher->name }}</td>
                                                         @endforeach
                                                         <td>{{ date('M d ,Y', strtotime($course->created_at)) }}

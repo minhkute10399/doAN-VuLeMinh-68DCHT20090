@@ -20,4 +20,5 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/bootstrap.js', 'public/js/bootstrap.js')
     .js('resources/js/pusher.js', 'public/js/pusher.js')
     .js('resources/js/comment.js', 'public/js/comment.js')
+    .js('resources/js/dropdown-notification', 'public/js/dropdown-notification.js')
     .copy('node_modules/chart.js/dist/Chart.js', 'public/js');

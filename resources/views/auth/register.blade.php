@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -80,5 +80,66 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+<section class="body-auth">
+    <section class="content-auth">
+        <section class="form-auth">
+            <h1 class="auth-heading">{{ trans('message.register') }}</h1>
+            <p class="auth-sub-heading">{{ trans('message.content_login_to_learn') }}</p>
+            <ul>
+                <li class="auth-separator"></li>
+                <li>
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+                        <div class="text-input-container">
+                            <label for="name">{{ trans('message.fullname') }}</label>
+                            <input type="text" class="auth-input" id="name" placeholder="{{ trans('message.type_your_fullname') }}" name="name">
+                            @error('name')
+                                <span role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="text-input-container">
+                            <label for="email">{{ trans('message.email') }}</label>
+                            <input type="email" class="auth-input" id="email" placeholder="{{ trans('message.type_your_email') }}" name="email">
+                            @error('email')
+                                <span role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="text-input-container">
+                            <label for="password">{{ trans('message.password') }}</label>
+                            <input type="password" class="auth-input" id="password" placeholder="{{ trans('message.enter_password') }}" name="password">
+                            @error('password')
+                                <span role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="text-input-container">
+                            <label for="re-password">{{ trans('message.confirm_password') }}</label>
+                            <input type="password" class="auth-input" id="re-password" placeholder="{{ trans('message.enter_password') }}" name="password_confirmation">
+                            @error('password')
+                                <span role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <button type="submit" class="auth-btn-submit">{{ trans('message.register') }}</button>
+                    </form>
+                    <section class="auth-reset-pwd">
+                    </section>
+                </li>
+            </ul>
+        </section>
+    </section>
+    @if (Route::has('login'))
+    <section class="other-action">
+        <p>{{ trans('message.account_exist') }}</p>
+        <a href="{{ route('login') }}" class="register-btn-page">{{ trans('message.login') }}</a>
+    </section>
+    @endif
+</section>
 @endsection

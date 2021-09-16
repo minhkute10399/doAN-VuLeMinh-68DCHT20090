@@ -108,7 +108,7 @@
                     <h5>{{ trans('message.search') }}: </h5>
                 </div>
                 <div class="search-item-course">
-                    <form action="{{ route('search') }}" method="POST" id="search_course">
+                    <form action="{{ route('search') }}" method="GET" id="search_course">
                         @csrf
                         <input type="text" name="search" class="form-control float-right search"
                             placeholder="{{ trans('message.search_course') }}">
@@ -161,7 +161,7 @@
                                 <p>{{ $course->description }}</p>
                                 <ul class="info-subject">
                                     <li class="author">
-                                        @foreach ($course->users->where('role_id', config('role.teacher')) as $user)
+                                        @foreach ($course->users->where('role_id', config('role.teacher'))->take(1) as $user)
                                             <a href="#">
                                                 <img src="{{ asset(config('image_path.images') . '/' . $user->images) }}"
                                                     alt="" class="author-icon">{{ $user->name }}

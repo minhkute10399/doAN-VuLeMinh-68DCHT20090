@@ -81,79 +81,48 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/backgroundscript.js":
-/*!******************************************!*\
-  !*** ./resources/js/backgroundscript.js ***!
-  \******************************************/
+/***/ "./resources/js/dropdown-notification.js":
+/*!***********************************************!*\
+  !*** ./resources/js/dropdown-notification.js ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-window.onclick = function (event) {
+$('#btn-dropdown-notification').on("click", function (dropdown) {
   var dropdownNotify = document.getElementById("btn-dropdown-notification");
 
   if (dropdownNotify) {
-    dropdownNotify.onclick = function () {
-      document.getElementById("notification-content").classList.toggle("show");
-    };
+    document.getElementById("notification-content").classList.toggle("show");
   }
 
-  var dropdown = document.getElementById('btn-dropdown');
-
-  if (dropdown) {
-    dropdown.onclick = function () {
-      document.getElementById('dropdown-content').classList.toggle("show");
-    };
-  }
-
-  if (!event.target.matches('#btn-dropdown')) {
-    var _dropdown = document.getElementsByClassName('dropdown');
-
-    for (var i = 0; i < _dropdown.length; i++) {
-      var openDropdown = _dropdown[i];
-
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-
-  if (!event.target.matches('#btn-dropdown-notification')) {
+  if (!dropdown.target.matches('#btn-dropdown-notification')) {
     var dropdownNotification = document.getElementsByClassName('dropdown-notification');
 
-    for (var _i = 0; _i < dropdownNotification.length; _i++) {
-      var openDropdownNoti = dropdownNotification[_i];
+    for (var i = 0; i < dropdownNotification.length; i++) {
+      var openDropdownNoti = dropdownNotification[i];
 
       if (openDropdownNoti.classList.contains('show')) {
         openDropdownNoti.classList.remove('show');
       }
     }
   }
-
-  $.ajax({
-    type: "GET",
-    url: "/getNotification",
-    cache: false,
-    success: function success(notification) {
-      $("#notification-content").html(notification);
-    }
-  });
-};
+});
 
 /***/ }),
 
-/***/ 1:
-/*!************************************************!*\
-  !*** multi ./resources/js/backgroundscript.js ***!
-  \************************************************/
+/***/ 8:
+/*!**************************************************!*\
+  !*** multi ./resources/js/dropdown-notification ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/doAN-VuLeMinh-68DCHT20090/resources/js/backgroundscript.js */"./resources/js/backgroundscript.js");
+module.exports = __webpack_require__(/*! /opt/lampp/htdocs/doAN-VuLeMinh-68DCHT20090/resources/js/dropdown-notification */"./resources/js/dropdown-notification.js");
 
 
 /***/ })
