@@ -17381,7 +17381,6 @@ $.ajax({
     var id = e.id;
     Echo["private"]('comment-channel' + id).listen('CommentNotification', function (e) {
       toastr.success(e.channel['title']);
-      $(".number-notification").text(e.channel['count_unread_notify'] + 1);
     });
   }
 });
